@@ -11,6 +11,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,6 +70,27 @@ const Header = () => {
           <Typography variant="h6" className={classes.title}>
             Watercooler
           </Typography>
+          <Link
+            style={{ marginRight: "5px" }}
+            color="inherit"
+            component="button"
+            variant="body2"
+            onClick={() => {
+              console.info("I got to About.");
+            }}
+          >
+            About
+          </Link>
+          <Link
+            color="inherit"
+            component="button"
+            variant="body2"
+            onClick={() => {
+              console.info("I go to Forum.");
+            }}
+          >
+            Forum
+          </Link>
           {auth && (
             <div>
               <IconButton
