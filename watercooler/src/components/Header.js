@@ -73,7 +73,7 @@ const Header = () => {
           </Typography>
           <Link
             href="/"
-            style={{ marginRight: "5px" }}
+            style={{ marginRight: "10px", color: "white" }}
             color="inherit"
             component="button"
             variant="body2"
