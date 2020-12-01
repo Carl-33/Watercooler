@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -71,29 +71,32 @@ const Header = () => {
           <Typography variant="h6" className={classes.title}>
             Watercooler
           </Typography>
-          <Link
-            href="/"
-            style={{ marginRight: "10px", color: "white" }}
-            color="inherit"
-            component="button"
-            variant="body2"
-            onClick={() => {
-              console.info("I got to About.");
-            }}
-          >
-            About
-          </Link>
-          <Link
-            href="/Forum"
-            color="inherit"
-            component="button"
-            variant="body2"
-            onClick={() => {
-              console.info("I go to Forum.");
-            }}
-          >
-            Forum
-          </Link>
+          <Typography variant="h6" className={classes.title}>
+            <Link
+              href="/"
+              // color="inherit"
+              component="button"
+              variant="body2"
+              onClick={() => {
+                console.info("I got to About.");
+              }}
+            >
+              About
+            </Link>
+          </Typography>
+          <Typography variant="h6" className={classes.title}>
+            <Link
+              href="/Forum"
+              // color="inherit"
+              component="button"
+              variant="body2"
+              onClick={() => {
+                console.info("I go to Forum.");
+              }}
+            >
+              Forum
+            </Link>
+          </Typography>
           {auth && (
             <div>
               <IconButton
