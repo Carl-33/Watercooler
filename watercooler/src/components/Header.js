@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, withTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -11,6 +11,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import "./Header.css";
 // import Link from "@material-ui/core/Link";
 import Link from "./Links";
 
@@ -74,7 +75,8 @@ const Header = () => {
           <Typography variant="h6" className={classes.title}>
             <Link
               href="/"
-              // color="inherit"
+              style={{ color: "white !important" }}
+              color="inherit"
               component="button"
               variant="body2"
               onClick={() => {
@@ -87,7 +89,6 @@ const Header = () => {
           <Typography variant="h6" className={classes.title}>
             <Link
               href="/Forum"
-              // color="inherit"
               component="button"
               variant="body2"
               onClick={() => {
