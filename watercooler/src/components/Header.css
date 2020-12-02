@@ -1,4 +1,10 @@
 h6 > a {
-  color: white !important;
+  color: black !important;
   text-decoration: none;
+}
+
+h6 {
+  /* color: #f50057; */
+  color: #f50057;
+  text-shadow: white 0.5px 0 5px;
 }

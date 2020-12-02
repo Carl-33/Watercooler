@@ -88,6 +88,18 @@ const Header = () => {
           </Typography>
           <Typography variant="h6" className={classes.title}>
             <Link
+              href="/Dashboard"
+              component="button"
+              variant="body2"
+              onClick={() => {
+                console.info("I go to Forum.");
+              }}
+            >
+              Dashboard
+            </Link>
+          </Typography>
+          <Typography variant="h6" className={classes.title}>
+            <Link
               href="/Forum"
               component="button"
               variant="body2"
