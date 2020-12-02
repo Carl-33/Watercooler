@@ -14,7 +14,7 @@ import Menu from "@material-ui/core/Menu";
 import "./Header.css";
 // import Link from "@material-ui/core/Link";
 import Link from "./Links";
-
+import LocationCityIcon from "@material-ui/icons/LocationCity";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -67,7 +67,7 @@ const Header = () => {
             color="inherit"
             aria-label="menu"
           >
-            <MenuIcon />
+            <LocationCityIcon style={{ fontSize: 40 }} />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             Watercooler
@@ -75,6 +75,7 @@ const Header = () => {
           <Typography variant="h6" className={classes.title}>
             <Link
               href="/"
+              className="link"
               style={{ color: "white !important" }}
               color="inherit"
               component="button"

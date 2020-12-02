@@ -30,6 +30,11 @@ const About = () => {
       >
         <Grid item xs={6}>
           <Card className={classes.root}>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                Watercooler
+              </Typography>
+            </CardContent>
             <CardActionArea>
               <CardMedia
                 component="img"
@@ -39,11 +44,6 @@ const About = () => {
                 title="Watercooler Talk"
               />
             </CardActionArea>
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                Watercooler!
-              </Typography>
-            </CardContent>
           </Card>
         </Grid>
         <Grid item xs={6}>
