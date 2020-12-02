@@ -6,5 +6,6 @@ h6 > a {
 h6 {
   /* color: #f50057; */
   color: #f50057;
+  font-weight: bold;
   text-shadow: white 0.5px 0 5px;
 }
