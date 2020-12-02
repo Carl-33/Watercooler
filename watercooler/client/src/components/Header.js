@@ -76,6 +76,7 @@ const Header = () => {
             <Link
               href="/"
               className="link"
+              className="nav-link nav-link-ltr"
               style={{ color: "white !important" }}
               color="inherit"
               component="button"
@@ -90,6 +91,7 @@ const Header = () => {
           <Typography variant="h6" className={classes.title}>
             <Link
               href="/Dashboard"
+              className="nav-link nav-link-ltr"
               component="button"
               variant="body2"
               onClick={() => {
@@ -102,6 +104,7 @@ const Header = () => {
           <Typography variant="h6" className={classes.title}>
             <Link
               href="/Forum"
+              className="nav-link nav-link-ltr"
               component="button"
               variant="body2"
               onClick={() => {
