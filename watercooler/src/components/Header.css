@@ -14,20 +14,36 @@ h6 {
   text-shadow: grey 0.5px 0 5px;
 }
 
-.link {
+.nav-link {
+  /* font-weight: bold; */
+  font-size: 20px;
+
+  text-decoration: none;
+  color: #031d44;
+  padding: 20px 0px;
+  margin: 0px 20px;
   display: inline-block;
-  padding-top: 10px;
-  padding-bottom: 5px;
-  overflow: hidden;
-  &:before {
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: $hover;
-    transform: translateX(-100%);
-  }
-  &:hover:before {
-    transform: translateX(0);
-  }
+  position: relative;
+  opacity: 0.75;
+}
+
+.nav-link:hover {
+  opacity: 1;
+}
+
+.nav-link::before {
+  transition: 300ms;
+  height: 5px;
+  content: "";
+  position: absolute;
+  background-color: #031d44;
+}
+
+.nav-link-ltr::before {
+  width: 0%;
+  bottom: 10px;
+}
+
+.nav-link-ltr:hover::before {
+  width: 100%;
 }
