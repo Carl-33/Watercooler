@@ -33,10 +33,11 @@ h6 {
 
 .nav-link::before {
   transition: 300ms;
-  height: 5px;
+  height: 3px;
   content: "";
   position: absolute;
-  background-color: #031d44;
+  /* background-color: #031d44; */
+  background-color: #f50057;
 }
 
 .nav-link-ltr::before {
