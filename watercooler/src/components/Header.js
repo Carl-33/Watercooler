@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, withTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -11,9 +11,10 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import "./Header.css";
 // import Link from "@material-ui/core/Link";
 import Link from "./Links";
-
+import LocationCityIcon from "@material-ui/icons/LocationCity";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -66,7 +67,7 @@ const Header = () => {
             color="inherit"
             aria-label="menu"
           >
-            <MenuIcon />
+            <LocationCityIcon style={{ fontSize: 40 }} />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             Watercooler
@@ -74,7 +75,9 @@ const Header = () => {
           <Typography variant="h6" className={classes.title}>
             <Link
               href="/"
-              // color="inherit"
+              className="link"
+              style={{ color: "white !important" }}
+              color="inherit"
               component="button"
               variant="body2"
               onClick={() => {
@@ -86,8 +89,19 @@ const Header = () => {
           </Typography>
           <Typography variant="h6" className={classes.title}>
             <Link
+              href="/Dashboard"
+              component="button"
+              variant="body2"
+              onClick={() => {
+                console.info("I go to Forum.");
+              }}
+            >
+              Dashboard
+            </Link>
+          </Typography>
+          <Typography variant="h6" className={classes.title}>
+            <Link
               href="/Forum"
-              // color="inherit"
               component="button"
               variant="body2"
               onClick={() => {
