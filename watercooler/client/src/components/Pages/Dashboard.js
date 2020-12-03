@@ -19,8 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const message = `Truncation should be conditionally applicable on this long line of text
- as this is a much longer line than what the container can support. `;
+const message = `We need to customize what is said here for where the buttons take the user `;
 
 const Dashboard = () => {
   const classes = useStyles();
