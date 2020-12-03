@@ -24,11 +24,11 @@ const About = () => {
       <Grid
         container
         direction="row"
-        spacing={3}
+        spacing={5}
         justify="space-evenly"
         alignItems="center"
       >
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Card className={classes.root}>
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
@@ -46,7 +46,7 @@ const About = () => {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Card className={classes.root}>
             <CardActionArea>
               <CardMedia
