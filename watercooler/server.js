@@ -9,19 +9,21 @@ const routes = require("./routes");
 // middleware
 
 // middleware that prints incoming requests to the sever console.
-app.use((req, res, next ) => {
-    console.log(`request_endpoint: ${req.method} ${req.url}`)
-    next();
-})
+app.use((req, res, next) => {
+  console.log(`request_endpoint: ${req.method} ${req.url}`);
+  next();
+});
 
 // body parser middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 // Serve static assets
-if(process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
 }
 
 // add routes
@@ -31,10 +33,6 @@ app.use(routes);
 // uncommnet out when mongoDB is ready
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/ (mongoDB database name here) ")
 
-app.listen(PORT, function() {
-    console.log("Watercooler listening on http://localhost:" + PORT)
-})
-
-
-
-
+app.listen(PORT, function () {
+  console.log("Watercooler listening on http://localhost:" + PORT);
+});
