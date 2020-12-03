@@ -31,7 +31,7 @@ app.use(routes);
 
 // Connect to MongoDB or Mongo Atlas
 // uncommnet out when mongoDB is ready
-mongoose.connect(process.env.mongodeploy || "mongodb://localhost/wcdb")
+mongoose.connect(process.env.mongodeploy || "mongodb://localhost/watercooler")
 
 app.listen(PORT, function () {
   console.log("Watercooler listening on http://localhost:" + PORT);
