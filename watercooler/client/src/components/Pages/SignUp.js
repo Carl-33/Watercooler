@@ -59,8 +59,8 @@ const SignUp = () => {
   const passwordRef = useRef();
   const classes = useStyles();
 
-  const handleSubmit = () => {
-    // preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log('hi!');
     API.saveUser({
       firstName: firstNameRef.current.value,
@@ -99,7 +99,7 @@ const SignUp = () => {
                 fullWidth
                 id="firstName"
                 label="First Name"
-                required ref={firstNameRef}
+                required inputRef={firstNameRef}
                 autoFocus
               />
             </Grid>
@@ -111,7 +111,7 @@ const SignUp = () => {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                required ref={lastNameRef}
+                required inputRef={lastNameRef}
                 autoComplete="lname"
               />
             </Grid>
@@ -120,10 +120,10 @@ const SignUp = () => {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
+                id="company"
                 label="Company"
                 name="email"
-                required ref={companyRef}
+                required inputRef={companyRef}
                 autoComplete="email"
               />
             </Grid>
@@ -132,10 +132,10 @@ const SignUp = () => {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
+                id="location"
                 label="Location"
                 name="email"
-                required ref={locationRef}
+                required inputRef={locationRef}
                 autoComplete="email"
               />
             </Grid>
@@ -147,7 +147,7 @@ const SignUp = () => {
                 id="email"
                 label="Email Address"
                 name="email"
-                required ref={emailRef}
+                required inputRef={emailRef}
                 autoComplete="email"
               />
             </Grid>
@@ -160,7 +160,7 @@ const SignUp = () => {
                 label="Password"
                 type="password"
                 id="password"
-                required ref={passwordRef}
+                required inputRef={passwordRef}
                 autoComplete="current-password"
               />
             </Grid>
@@ -172,8 +172,8 @@ const SignUp = () => {
             </Grid>
           </Grid>
           <Button
-            type="submit"
-            onSubmit={handleSubmit()}
+            // type="submit"
+            onClick={handleSubmit}
             fullWidth
             variant="contained"
             color="primary"
