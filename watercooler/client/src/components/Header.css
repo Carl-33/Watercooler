@@ -48,3 +48,7 @@ h6 {
 .nav-link-ltr:hover::before {
   width: 100%;
 }
+
+.switch {
+  color: #f50057;
+}
