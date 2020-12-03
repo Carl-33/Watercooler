@@ -13,6 +13,6 @@ const workplaceSchema = new Schema({
   },
 });
 
-const workplaceModel = mongoose.model("Workplace", workplaceSchema);
+const Workplace = mongoose.model("Workplace", workplaceSchema);
 
-module.exports = workplaceModel;
+module.exports = Workplace;
