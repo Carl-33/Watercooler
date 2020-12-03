@@ -10,10 +10,10 @@ import Typography from "@material-ui/core/Typography";
 import Watercool from "../images/water-cooler-talk.png";
 import Grid from "@material-ui/core/Grid";
 import Wally from "../images/wally3.png";
-
+import Divider from "@material-ui/core/Divider";
 const useStyles = makeStyles({
   root: {
-    maxWidth: 1000,
+    maxWidth: 1100,
   },
 });
 const About = () => {
@@ -24,16 +24,22 @@ const About = () => {
       <Grid
         container
         direction="row"
-        spacing={3}
+        spacing={5}
         justify="space-evenly"
         alignItems="center"
       >
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Card className={classes.root}>
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography
+                gutterBottom
+                align="center"
+                variant="h3"
+                component="h2"
+              >
                 Watercooler
               </Typography>
+              <Divider />
             </CardContent>
             <CardActionArea>
               <CardMedia
@@ -46,7 +52,9 @@ const About = () => {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item xs={6}>
+
+        <Grid item xs={12} sm={6}>
+          <br />
           <Card className={classes.root}>
             <CardActionArea>
               <CardMedia
@@ -58,7 +66,7 @@ const About = () => {
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  About
+                  | About |
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   Water Cooler is an online forum that allows workers to connect
