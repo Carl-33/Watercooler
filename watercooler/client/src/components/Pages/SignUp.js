@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,11 +13,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import API from "../../utils/API";
-
-function handleSubmit() {
-  // preventDefault(e);
-  console.log("hi!");
-}
 
 function Copyright() {
   return (
@@ -55,7 +50,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const SignUp = () => {
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const companyRef = useRef();
+  const locationRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
   const classes = useStyles();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("hi!");
+    API.saveUser({
+      firstName: firstNameRef.current.value,
+      lastName: lastNameRef.current.value,
+      company: companyRef.current.value,
+      location: locationRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    });
+    firstNameRef.current.value = "";
+    lastNameRef.current.value = "";
+    companyRef.current.value = "";
+    locationRef.current.value = "";
+    emailRef.current.value = "";
+    passwordRef.current.value = "";
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -78,6 +98,8 @@ const SignUp = () => {
                 fullWidth
                 id="firstName"
                 label="First Name"
+                required
+                inputRef={firstNameRef}
                 autoFocus
               />
             </Grid>
@@ -89,6 +111,8 @@ const SignUp = () => {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
+                required
+                inputRef={lastNameRef}
                 autoComplete="lname"
               />
             </Grid>
@@ -97,9 +121,11 @@ const SignUp = () => {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
+                id="company"
                 label="Company"
                 name="email"
+                required
+                inputRef={companyRef}
                 autoComplete="email"
               />
             </Grid>
@@ -108,9 +134,11 @@ const SignUp = () => {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
+                id="location"
                 label="Location"
                 name="email"
+                required
+                inputRef={locationRef}
                 autoComplete="email"
               />
             </Grid>
@@ -122,6 +150,8 @@ const SignUp = () => {
                 id="email"
                 label="Email Address"
                 name="email"
+                required
+                inputRef={emailRef}
                 autoComplete="email"
               />
             </Grid>
@@ -134,6 +164,8 @@ const SignUp = () => {
                 label="Password"
                 type="password"
                 id="password"
+                required
+                inputRef={passwordRef}
                 autoComplete="current-password"
               />
             </Grid>
@@ -145,8 +177,8 @@ const SignUp = () => {
             </Grid>
           </Grid>
           <Button
-            type="submit"
-            onSubmit={handleSubmit()}
+            // type="submit"
+            onClick={handleSubmit}
             fullWidth
             variant="contained"
             color="primary"
