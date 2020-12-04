@@ -62,6 +62,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('hi!');
+    console.log(firstNameRef.current.value)
     API.saveUser({
       firstName: firstNameRef.current.value,
       lastName: lastNameRef.current.value,
