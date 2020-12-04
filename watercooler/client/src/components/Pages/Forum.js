@@ -16,6 +16,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 import MessageIcon from "@material-ui/icons/Message";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -47,6 +48,42 @@ const search = `Truncation should be conditionally applicable on this long line 
 
 const Forum = () => {
   const classes = useStyles();
+
+  //this is for the submit button to render comments
+  //pass comment in as props??? from db??
+  const renderedComment = comments.map((comment) => {
+    if (comment.value === null) {
+      return null;
+    }
+
+    return (
+      <>
+        <ListItem alignItems="flex-start">
+          <ListItemText
+            primary="Summer BBQ"
+            secondary={
+              <React.Fragment>
+                <Typography
+                  component="span"
+                  variant="body2"
+                  className={classes.inline}
+                  color="textPrimary"
+                >
+                  to Scott, Alex, Jennifer
+                </Typography>
+                {`— Wish I could come, but I'm out of town this
+                  Wish I could come, but I'm out of town thisWish I could come, 
+                  but I'm out of town thisWish I could come, but I'm 
+                  out of town thisWish I could come, but I'm out 
+                  of town this`}
+              </React.Fragment>
+            }
+          />
+        </ListItem>
+        <Divider variant="inset" component="li" />
+      </>
+    );
+  });
 
   return (
     <div className={classes.root}>
@@ -93,19 +130,6 @@ const Forum = () => {
           </Card>
         </Grid>
       </Grid>
-
-      {/* <Paper className={classes.paper}>
-        <Grid container wrap="nowrap" spacing={2}>
-          <Grid item></Grid>
-          <Grid item xs={8}>
-            <Typography gutterBottom variant="h5" component="h2">
-              Posts
-            </Typography>
-            <Typography>{forum}</Typography>
-          </Grid>
-        </Grid>
-      </Paper> */}
-
       <Paper className={classes.paper}>
         <List className={classes.root}>
           <ListItem alignItems="flex-start">
@@ -140,7 +164,11 @@ const Forum = () => {
                   >
                     to Scott, Alex, Jennifer
                   </Typography>
-                  {" — Wish I could come, but I'm out of town this…"}
+                  {`— Wish I could come, but I'm out of town this
+                  Wish I could come, but I'm out of town thisWish I could come, 
+                  but I'm out of town thisWish I could come, but I'm 
+                  out of town thisWish I could come, but I'm out 
+                  of town this`}
                 </React.Fragment>
               }
             />
@@ -159,23 +187,42 @@ const Forum = () => {
                   >
                     Sandra Adams
                   </Typography>
-                  {" — Do you have Paris recommendations? Have you ever…"}
                 </React.Fragment>
               }
             />
           </ListItem>
         </List>
       </Paper>
-
+      {/* Soft code to generate a new text*/}
+      {renderedComment}
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button variant="outlined" color="primary">
+            {/* Button to render a New Commnet*/}
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => renderComment(comment)}
+            >
               <MessageIcon style={{ marginRight: "10px" }} />
               Submit Post
             </Button>
           </Grid>
           <Grid item xs>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="title"
+                label="Title"
+                name="title"
+                defaultValue="Work Thoughts"
+                required
+                // inputRef={lastNameRef}
+                autoComplete="lname"
+              />
+            </Grid>
             <TextField
               id="outlined-multiline-static"
               label="Name - Comment"

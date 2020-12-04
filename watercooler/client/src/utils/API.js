@@ -7,13 +7,14 @@ export default {
     },
     // gets users with given id
     getUser: function(id) {
-        return axios.get("/pi/users/" + id);
+        return axios.get("/api/users/" + id);
     },
     // delete user
     deleteUser: function(id) {
         return axios.delete("/api/users/" + id);
     },
     saveUser: function(userData) {
-        return axios.post("api/users", userData)
+        console.log(userData)
+        return axios.post("/api/users", userData)
     }
 };
