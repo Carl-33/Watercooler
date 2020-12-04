@@ -28,9 +28,9 @@ export default {
     },
     // get all comments
     getComments: function() {
-        return axios.get("/api/comments");
+        return axios.get("/api/posts");
     },
-    createComment: function(commentData) {
-        return axios.post("/api/comments", commentData)
+    createComment: function(postData) {
+        return axios.post("/api/posts", postData)
     }
 };
