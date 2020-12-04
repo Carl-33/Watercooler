@@ -4,12 +4,14 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
   author: {
     type: String,
-    required: true,
+    required: true
   },
-
+  title: {
+    type: String
+  },
   body: {
-    type: String,
-  },
+    type: String
+  }
 });
 
 const Post = mongoose.model("Post", postSchema);
