@@ -14,22 +14,19 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import API from "../../utils/API";
 
-    function handleSubmit() {
-      // preventDefault(e);
-      console.log('hi!');
-    };
+function handleSubmit() {
+  // preventDefault(e);
+  console.log("hi!");
+}
 
 function Copyright() {
-
-
-
-
-
-
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="primary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link
+        color="theme.palette.secondary.main"
+        href="https://material-ui.com/"
+      >
         Watercooler
       </Link>{" "}
       {new Date().getFullYear()}
@@ -174,12 +171,6 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
-
-
-
-
-
 
 // function CreatePostForm() {
 //   const titleRef = useRef();

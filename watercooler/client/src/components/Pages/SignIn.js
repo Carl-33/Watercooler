@@ -15,9 +15,12 @@ import Container from "@material-ui/core/Container";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="primary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link
+        color="theme.palette.secondary.main"
+        href="https://material-ui.com/"
+      >
         Watercooler
       </Link>{" "}
       {new Date().getFullYear()}
@@ -102,6 +105,13 @@ const SignIn = () => {
           </Grid>
         </form>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
       <Box mt={5}>
         <Copyright />
       </Box>
