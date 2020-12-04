@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to MongoDB or Mongo Atlas
-// uncommnet out when mongoDB is ready
+
 mongoose.connect(process.env.mongodeploy || "mongodb://localhost/watercooler")
 
 app.listen(PORT, function () {

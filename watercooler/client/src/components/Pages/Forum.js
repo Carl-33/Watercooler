@@ -48,10 +48,15 @@ const search = `Truncation should be conditionally applicable on this long line 
 
 const Forum = () => {
   const classes = useStyles();
+  //useState for comment changes appending list items
+  const [title, setTitle] = useState("");
+  const [comment, setComment] = useState("");
 
   //this is for the submit button to render comments
   //pass comment in as props??? from db??
-  const renderedComment = comments.map((comment) => {
+  const renderedComment = comments.map((e, comment, title) => {
+    e.preventDefault();
+    console.log(comment, title);
     if (comment.value === null) {
       return null;
     }
@@ -60,7 +65,8 @@ const Forum = () => {
       <>
         <ListItem alignItems="flex-start">
           <ListItemText
-            primary="Summer BBQ"
+            // this is for the title
+            primary={data.title}
             secondary={
               <React.Fragment>
                 <Typography
@@ -71,11 +77,8 @@ const Forum = () => {
                 >
                   to Scott, Alex, Jennifer
                 </Typography>
-                {`— Wish I could come, but I'm out of town this
-                  Wish I could come, but I'm out of town thisWish I could come, 
-                  but I'm out of town thisWish I could come, but I'm 
-                  out of town thisWish I could come, but I'm out 
-                  of town this`}
+                {/* //this is for the comments */}
+                {Data.comment[0]}
               </React.Fragment>
             }
           />
@@ -200,15 +203,30 @@ const Forum = () => {
           <Grid item>
             {/* Button to render a New Commnet*/}
             <Button
+              value={(title, comment)}
               variant="outlined"
               color="primary"
-              onClick={() => renderComment(comment)}
+              onClick={(e) => renderedComment()}
             >
               <MessageIcon style={{ marginRight: "10px" }} />
               Submit Post
             </Button>
           </Grid>
           <Grid item xs>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="Name"
+                label="Name"
+                name="Name"
+                defaultValue="John Smith"
+                required
+                // inputRef={lastNameRef}
+                autoComplete="lname"
+              />
+            </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
@@ -225,7 +243,7 @@ const Forum = () => {
             </Grid>
             <TextField
               id="outlined-multiline-static"
-              label="Name - Comment"
+              label="Comment"
               multiline
               rows={6}
               defaultValue="What do you guys think about work?"
