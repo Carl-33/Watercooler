@@ -223,7 +223,7 @@ const Forum = () => {
               color="primary"
               // onClick={(() => setComment(renderComments))}
             >
-              <MessageIcon />
+              <MessageIcon style={{ margin: "3" }} />
               Submit Post
             </Button>
           </Grid>
