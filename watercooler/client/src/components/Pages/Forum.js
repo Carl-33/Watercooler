@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -16,6 +16,8 @@ import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 import MessageIcon from "@material-ui/icons/Message";
+import API from "../../utils/API";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -47,6 +49,23 @@ const search = `Truncation should be conditionally applicable on this long line 
 
 const Forum = () => {
   const classes = useStyles();
+  const authorRef = useRef();
+  const titleRef = useRef();
+  const bodyRef = useRef();
+
+  const savePost = (e) => {
+    e.preventDefault();
+    console.log('hi!');
+    API.createComment({
+      author: authorRef.current.value,
+      title: titleRef.current.value,
+      body: bodyRef.current.value,
+    });
+    authorRef.current.value = "";
+    titleRef.current.value = "";
+    bodyRef.current.value = "";
+  };
+
 
   return (
     <div className={classes.root}>
@@ -170,11 +189,40 @@ const Forum = () => {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button variant="outlined" color="primary">
+            <Button variant="outlined" color="primary" onClick={savePost}>
               <MessageIcon />
               Submit Post
             </Button>
           </Grid>
+          <Grid item xs>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="Name"
+                label="Name"
+                name="Name"
+                defaultValue="John Smith"
+                required
+                inputRef={authorRef}
+                autoComplete="lname"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="title"
+                label="Title"
+                name="title"
+                defaultValue="Work Thoughts"
+                required
+                inputRef={titleRef}
+                autoComplete="lname"
+              />
+            </Grid>
           <Grid item xs>
             <TextField
               id="outlined-multiline-static"
@@ -182,9 +230,11 @@ const Forum = () => {
               multiline
               rows={6}
               defaultValue="What do you guys think about work?"
+              required inputRef={bodyRef}
               variant="outlined"
             />
           </Grid>
+        </Grid>
         </Grid>
       </Paper>
     </div>
