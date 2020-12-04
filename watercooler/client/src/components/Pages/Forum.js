@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -17,6 +17,7 @@ import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 import MessageIcon from "@material-ui/icons/Message";
 import API from "../../utils/API";
+import Comment from "../Comment";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,7 +48,11 @@ Change this to list items`;
 const search = `Truncation should be conditionally applicable on this long line of text
  as this is a much longer line than what the container can support. `;
 
+//Forum Default
 const Forum = () => {
+  //Set state for rendering comments
+  const [comment, setComment] = useState([]);
+
   const classes = useStyles();
   const authorRef = useRef();
   const titleRef = useRef();
@@ -55,7 +60,7 @@ const Forum = () => {
 
   const savePost = (e) => {
     e.preventDefault();
-    console.log('hi!');
+    console.log("hi!");
     API.createComment({
       author: authorRef.current.value,
       title: titleRef.current.value,
@@ -66,6 +71,37 @@ const Forum = () => {
     bodyRef.current.value = "";
   };
 
+  useEffect(async () => {
+    const comment = await API.getComments({
+      author: authorRef.current.value,
+      title: titleRef.current.value,
+      body: bodyRef.current.value,
+    });
+    console.log(comment);
+  }, []);
+
+  const comments = [
+    {
+      author: "John",
+      title: "Title",
+      body: "Body Body Body Body Body Body Body Body Body ",
+    },
+    {
+      author: "John",
+      title: "Title",
+      body: "Body Body Body Body Body Body Body Body Body",
+    },
+    {
+      author: "John",
+      title: "Title",
+      body: "Body Body Body Body Body Body Body Body Body",
+    },
+  ];
+
+  // const renderedComment = async (e, comments) => {
+  //   e.preventDefault();
+
+  // };
 
   return (
     <div className={classes.root}>
@@ -112,19 +148,6 @@ const Forum = () => {
           </Card>
         </Grid>
       </Grid>
-
-      {/* <Paper className={classes.paper}>
-        <Grid container wrap="nowrap" spacing={2}>
-          <Grid item></Grid>
-          <Grid item xs={8}>
-            <Typography gutterBottom variant="h5" component="h2">
-              Posts
-            </Typography>
-            <Typography>{forum}</Typography>
-          </Grid>
-        </Grid>
-      </Paper> */}
-
       <Paper className={classes.paper}>
         <List className={classes.root}>
           <ListItem alignItems="flex-start">
@@ -159,7 +182,11 @@ const Forum = () => {
                   >
                     to Scott, Alex, Jennifer
                   </Typography>
-                  {" — Wish I could come, but I'm out of town this…"}
+                  {`— Wish I could come, but I'm out of town this
+                  Wish I could come, but I'm out of town thisWish I could come, 
+                  but I'm out of town thisWish I could come, but I'm 
+                  out of town thisWish I could come, but I'm out 
+                  of town this`}
                 </React.Fragment>
               }
             />
@@ -178,18 +205,24 @@ const Forum = () => {
                   >
                     Sandra Adams
                   </Typography>
-                  {" — Do you have Paris recommendations? Have you ever…"}
                 </React.Fragment>
               }
             />
           </ListItem>
         </List>
+        {/* Render comment component*/}
+        {comments.map((comment, i) => (
+          <Comment key={i} comment={comment} classes={classes} />
+        ))}
       </Paper>
-
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button variant="outlined" color="primary" onClick={savePost}>
+            <Button
+              variant="outlined"
+              color="primary"
+              // onClick={(() => setComment(renderComments))}
+            >
               <MessageIcon />
               Submit Post
             </Button>
@@ -223,18 +256,19 @@ const Forum = () => {
                 autoComplete="lname"
               />
             </Grid>
-          <Grid item xs>
-            <TextField
-              id="outlined-multiline-static"
-              label="Name - Comment"
-              multiline
-              rows={6}
-              defaultValue="What do you guys think about work?"
-              required inputRef={bodyRef}
-              variant="outlined"
-            />
+            <Grid item xs>
+              <TextField
+                id="outlined-multiline-static"
+                label="Comment"
+                multiline
+                rows={6}
+                defaultValue="What do you guys think about work?"
+                required
+                inputRef={bodyRef}
+                variant="outlined"
+              />
+            </Grid>
           </Grid>
-        </Grid>
         </Grid>
       </Paper>
     </div>

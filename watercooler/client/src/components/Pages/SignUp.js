@@ -14,15 +14,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import API from "../../utils/API";
 
-
-  
-
 function Copyright() {
-
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="primary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link
+        color="theme.palette.secondary.main"
+        href="https://material-ui.com/"
+      >
         Watercooler
       </Link>{" "}
       {new Date().getFullYear()}
@@ -61,15 +60,15 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('hi!');
-    console.log(firstNameRef.current.value)
+    console.log("hi!");
+    console.log(firstNameRef.current.value);
     API.saveUser({
       firstName: firstNameRef.current.value,
       lastName: lastNameRef.current.value,
       company: companyRef.current.value,
       location: locationRef.current.value,
       email: emailRef.current.value,
-      password: passwordRef.current.value
+      password: passwordRef.current.value,
     });
     firstNameRef.current.value = "";
     lastNameRef.current.value = "";
@@ -100,7 +99,8 @@ const SignUp = () => {
                 fullWidth
                 id="firstName"
                 label="First Name"
-                required inputRef={firstNameRef}
+                required
+                inputRef={firstNameRef}
                 autoFocus
               />
             </Grid>
@@ -112,7 +112,8 @@ const SignUp = () => {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                required inputRef={lastNameRef}
+                required
+                inputRef={lastNameRef}
                 autoComplete="lname"
               />
             </Grid>
@@ -124,7 +125,8 @@ const SignUp = () => {
                 id="company"
                 label="Company"
                 name="email"
-                required inputRef={companyRef}
+                required
+                inputRef={companyRef}
                 autoComplete="email"
               />
             </Grid>
@@ -136,7 +138,8 @@ const SignUp = () => {
                 id="location"
                 label="Location"
                 name="email"
-                required inputRef={locationRef}
+                required
+                inputRef={locationRef}
                 autoComplete="email"
               />
             </Grid>
@@ -148,7 +151,8 @@ const SignUp = () => {
                 id="email"
                 label="Email Address"
                 name="email"
-                required inputRef={emailRef}
+                required
+                inputRef={emailRef}
                 autoComplete="email"
               />
             </Grid>
@@ -161,7 +165,8 @@ const SignUp = () => {
                 label="Password"
                 type="password"
                 id="password"
-                required inputRef={passwordRef}
+                required
+                inputRef={passwordRef}
                 autoComplete="current-password"
               />
             </Grid>
@@ -199,12 +204,6 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
-
-
-
-
-
 
 // function CreatePostForm() {
 //   const titleRef = useRef();
