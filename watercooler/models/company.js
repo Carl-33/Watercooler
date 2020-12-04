@@ -4,13 +4,13 @@ const Schema = mongoose.Schema;
 const workplaceSchema = new Schema({
   company: {
     type: String,
-    required: true,
+    required: true
   },
 
   location: {
     type: String,
-    required: true,
-  },
+    required: true
+  }
 });
 
 const Workplace = mongoose.model("Workplace", workplaceSchema);

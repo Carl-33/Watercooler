@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   firstName: {
     type: String,
-    required: true,
+    required: true
   },
 
   lastName: {
     type: String,
-    required: true,
+    required: true
   },
 
   company: {
@@ -22,13 +22,13 @@ const userSchema = new Schema({
 
   email: {
     type: String,
-    required: true,
+    required: true
   },
 
   password: {
     type: String,
-    required: true,
-  },
+    required: true
+  }
 });
 
 const User = mongoose.model("User", userSchema);

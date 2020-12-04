@@ -13,8 +13,24 @@ export default {
     deleteUser: function(id) {
         return axios.delete("/api/users/" + id);
     },
+    // add user
     saveUser: function(userData) {
         console.log(userData)
         return axios.post("/api/users", userData)
+    },
+    // get all workplaces 
+    getWorkplaces: function() {
+        return axios.get("/api/workplaces");
+    },
+    // add workplace
+    createWorkplace: function(workplaceData) {
+        return axios.post("/api/workplaces", workplaceData)
+    },
+    // get all comments
+    getComments: function() {
+        return axios.get("/api/comments");
+    },
+    createComment: function(commentData) {
+        return axios.post("/api/comments", commentData)
     }
 };
