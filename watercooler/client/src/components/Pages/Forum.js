@@ -47,11 +47,6 @@ const search = `Truncation should be conditionally applicable on this long line 
  as this is a much longer line than what the container can support. `;
 
 const Forum = () => {
-  const classes = useStyles();
-  //useState for comment changes appending list items
-  const [title, setTitle] = useState("");
-  const [comment, setComment] = useState("");
-
   //this is for the submit button to render comments
   //pass comment in as props??? from db??
   const renderedComment = comments.map((e, comment, title) => {
