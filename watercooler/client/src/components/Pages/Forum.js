@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -42,16 +42,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const title = `Title `;
-const forum = `This will be the posts we need to make a function to create a <p> tag inside for (huge array) 
-Change this to list items`;
-const search = `Truncation should be conditionally applicable on this long line of text
- as this is a much longer line than what the container can support. `;
-
 //Forum Default
 const Forum = () => {
-  //Set state for rendering comments
-  const [comment, setComment] = useState([]);
+  //Set state for rendering comments //remember to import it
+  // const [comment, setComment] = useState([]);
 
   const classes = useStyles();
   const authorRef = useRef();
@@ -70,13 +64,16 @@ const Forum = () => {
     titleRef.current.value = "";
     bodyRef.current.value = "";
   };
+  console.log(savePost);
 
+  // eslint-disable-next-line
   useEffect(async () => {
     const comment = await API.getComments({
       author: authorRef.current.value,
       title: titleRef.current.value,
       body: bodyRef.current.value,
     });
+
     console.log(comment);
   }, []);
 
@@ -231,7 +228,6 @@ const Forum = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 id="Name"
                 label="Name"
@@ -245,7 +241,6 @@ const Forum = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 id="title"
                 label="Title"

@@ -99,7 +99,6 @@ const SignUp = () => {
                 fullWidth
                 id="firstName"
                 label="First Name"
-                required
                 inputRef={firstNameRef}
                 autoFocus
               />
@@ -107,7 +106,6 @@ const SignUp = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 id="lastName"
                 label="Last Name"
@@ -120,7 +118,6 @@ const SignUp = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 id="company"
                 label="Company"
@@ -133,7 +130,6 @@ const SignUp = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 id="location"
                 label="Location"
@@ -146,7 +142,6 @@ const SignUp = () => {
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 id="email"
                 label="Email Address"
@@ -159,7 +154,6 @@ const SignUp = () => {
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 name="password"
                 label="Password"
