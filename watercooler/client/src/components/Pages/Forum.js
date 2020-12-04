@@ -171,7 +171,7 @@ const Forum = () => {
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
             <Button variant="outlined" color="primary">
-              <MessageIcon />
+              <MessageIcon style={{ marginRight: "10px" }} />
               Submit Post
             </Button>
           </Grid>
