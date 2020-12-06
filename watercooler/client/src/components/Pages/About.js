@@ -85,11 +85,12 @@ const About = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
+              <Button
+                size="small"
+                onclick="window.location.href='https://dashboard.heroku.com/apps/sheltered-cliffs-91068'"
+                color="primary"
+              >
                 Share
-              </Button>
-              <Button size="small" color="primary">
-                Learn More
               </Button>
             </CardActions>
           </Card>
