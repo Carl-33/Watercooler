@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const message = `We need to customize what is said here for where the buttons take the user `;
+// const message = `We need to customize what is said here for where the buttons take the user `;
 
 const Dashboard = () => {
   const classes = useStyles();
@@ -40,7 +40,7 @@ const Dashboard = () => {
             </Button>
           </Grid>
           <Grid item xs zeroMinWidth>
-            <Typography>{message}</Typography>
+            <Typography>Search for a forum</Typography>
           </Grid>
         </Grid>
       </Paper>
@@ -48,24 +48,24 @@ const Dashboard = () => {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button variant="outlined" color="primary">
-              Amazon Forum
+            <Button variant="outlined" color="primary" href="/Forum">
+              My Company
             </Button>
           </Grid>
           <Grid item xs={8}>
-            <Typography>{message}</Typography>
+            <Typography>See what your peers have to say about your company</Typography>
           </Grid>
         </Grid>
       </Paper>
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button variant="outlined" color="primary">
-              My Forum
+            <Button variant="outlined" color="primary" href="/Forum">
+              My Office
             </Button>
           </Grid>
           <Grid item xs>
-            <Typography>{message}</Typography>
+            <Typography>See what people at your office are talking about</Typography>
           </Grid>
         </Grid>
       </Paper>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,6 +13,7 @@ import Menu from "@material-ui/core/Menu";
 import "./Header.css";
 import Link from "./Links";
 import LocationCityIcon from "@material-ui/icons/LocationCity";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
