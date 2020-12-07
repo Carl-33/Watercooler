@@ -12,6 +12,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { useState } from "react";
+import { auth } from "../../firesbase"
 
 function Copyright() {
   return (
@@ -50,6 +52,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 const SignIn = () => {
   const classes = useStyles();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const signInWithEmailAndPasswordHandler = 
+    (event,email, password) => {
+      event.preventDefault();
+      auth.signInWithEmailAndPasswordHandler(email, password).catch(error => {
+        setError("uh oh, there was an error signing in with password and email");
+        console.error("uh oh, there was an error signing in with password and email", error);
+      });
+    };
+    const onChangeHandler = event => {
+      const { name, value } = event.currentTarget;
+      if (name === "userEmail") {
+        setEmail(value);
+      } else if (name === "userPassword") {
+        setPassword(value);
+      } 
+    };
+
+  
 
   return (
     <Container component="main" maxWidth="xs">
@@ -70,8 +93,11 @@ const SignIn = () => {
                 fullWidth
                 id="email"
                 label="Email Address"
-                name="email"
+                name="userEmail"
+                value = {email}
+                type="email"
                 autoComplete="email"
+                onChange={(event) => onChangeHandler(event)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -79,11 +105,13 @@ const SignIn = () => {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
+                name="userPassword"
                 label="Password"
                 type="password"
                 id="password"
+                value={password}
                 autoComplete="current-password"
+                onChange={(event) => onChangeHandler(event)}
               />
             </Grid>
           </Grid>
@@ -93,6 +121,7 @@ const SignIn = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}
           >
             Sign In
           </Button>
