@@ -75,9 +75,6 @@ const Header = () => {
             Watercooler
           </Typography>
           <Typography variant="h6" className={classes.title}>
-            farts
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
             <Link
               href="/"
               className="link"
