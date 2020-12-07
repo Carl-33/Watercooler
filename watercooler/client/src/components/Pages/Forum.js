@@ -46,9 +46,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 //Forum Default
-const Forum = () => {
-  const userData = useContext(UserContext)
-  console.log(userData)
+const Forum = (props) => {
+  let redirected = !!props.from ? props.from : false;
+  console.log("From button: ", redirected)
+
+  // take prop and conditionally render Forum.js based on whether or not props is
+  // !!props.from 
   const [comments, setComments] = useState([]);
   //Set state for inputs
   const [author, setAuthor] = useState("John Smith");
@@ -124,6 +127,7 @@ const Forum = () => {
     console.log("line 102", [...comments, inputs]);
   };
 
+  // make if/else statement based on redirect variable
   return (
     <div className={classes.root}>
       <br />

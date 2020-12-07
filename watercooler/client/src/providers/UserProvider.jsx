@@ -6,7 +6,6 @@ export const UserContext = createContext({ user: null });
 
 const UserProvider = (props) => {
     const [user, setUser] = useState(null);
-    const [fromDashboard, setFromDashboard] = useState(null);
     useEffect(() => {
         (async () => {
             auth.onAuthStateChanged(async userAuth => {
@@ -15,7 +14,7 @@ const UserProvider = (props) => {
             })})()
     }, []);
     return (
-        <UserContext.Provider value={{user, setUser, fromDashboard, setFromDashboard}}>
+        <UserContext.Provider value={{user, setUser}}>
             {props.children}
         </UserContext.Provider>
     );

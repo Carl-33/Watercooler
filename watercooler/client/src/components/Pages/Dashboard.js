@@ -49,7 +49,7 @@ const Dashboard = () => {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button variant="outlined" color="primary" href="/Forum" onClick={() => console.log(userData)}>
+            <Button variant="outlined" color="primary" href="/CompanyForum">
               My Company
             </Button>
           </Grid>
@@ -61,7 +61,7 @@ const Dashboard = () => {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button variant="outlined" color="primary" href="/Forum" onClick={() => userData.setFromDashboard("location")}>
+            <Button variant="outlined" color="primary" href="/LocationForum">
               My Office
             </Button>
           </Grid>
