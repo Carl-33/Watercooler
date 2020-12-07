@@ -11,6 +11,12 @@ const postSchema = new Schema({
   },
   body: {
     type: String
+  },
+  company: {
+    type: String
+  },
+  location: {
+    type: String
   }
 });
 
