@@ -127,7 +127,18 @@ const Forum = (props) => {
     console.log("line 102", [...comments, inputs]);
   };
 
+  // function checkCompany() {
+  //   if ()
+  // }
+
   // make if/else statement based on redirect variable
+  // if (redirected = company) {
+  //   comments.filter(checkCompany)
+
+  // } else if (redirected = location) {
+
+  // }
+
   return (
     <div className={classes.root}>
       <br />
@@ -177,67 +188,6 @@ const Forum = (props) => {
         </Grid>
       </Grid>
       <Paper className={classes.paper}>
-        <List className={classes.root}>
-          <ListItem alignItems="flex-start">
-            <ListItemText
-              primary="Brunch this weekend?"
-              secondary={
-                <React.Fragment>
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    className={classes.inline}
-                    color="textPrimary"
-                  >
-                    Ali Connors
-                  </Typography>
-                  {" — I'll be in your neighborhood doing errands this…"}
-                </React.Fragment>
-              }
-            />
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem alignItems="flex-start">
-            <ListItemText
-              primary="Summer BBQ"
-              secondary={
-                <React.Fragment>
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    className={classes.inline}
-                    color="textPrimary"
-                  >
-                    to Scott, Alex, Jennifer
-                  </Typography>
-                  {`— Wish I could come, but I'm out of town this
-                  Wish I could come, but I'm out of town thisWish I could come, 
-                  but I'm out of town thisWish I could come, but I'm 
-                  out of town thisWish I could come, but I'm out 
-                  of town this`}
-                </React.Fragment>
-              }
-            />
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem alignItems="flex-start">
-            <ListItemText
-              primary="Oui Oui"
-              secondary={
-                <React.Fragment>
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    className={classes.inline}
-                    color="textPrimary"
-                  >
-                    Sandra Adams
-                  </Typography>
-                </React.Fragment>
-              }
-            />
-          </ListItem>
-        </List>
         {/* Render comment component*/}
         {console.log(comments, "comment")}
         {comments !== undefined ? (
