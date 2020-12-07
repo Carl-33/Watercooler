@@ -14,7 +14,6 @@ import "./Header.css";
 import Link from "./Links";
 import LocationCityIcon from "@material-ui/icons/LocationCity";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -121,7 +120,7 @@ const Header = () => {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                <AccountCircle style={{ fontSize: 34 }} />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -138,10 +137,10 @@ const Header = () => {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>
+                <MenuItem style={{ fontSize: 16 }} onClick={handleClose}>
                   <Link href="/SignUp">Sign Up</Link>
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem style={{ fontSize: 16 }} onClick={handleClose}>
                   <Link href="/SignIn">Sign In</Link>
                 </MenuItem>
               </Menu>

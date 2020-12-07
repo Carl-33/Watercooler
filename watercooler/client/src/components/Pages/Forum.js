@@ -58,7 +58,7 @@ const Forum = (props) => {
   const [title, setTitle] = useState("Work Thoughts");
   const [body, setBody] = useState("What do you guys think about work?");
   const [company, setCompany] = useState("Corporate, inc.");
-  const [location, setLocation] = useState("profits dept.")
+  const [location, setLocation] = useState("profits dept.");
   //input Ref to DB!
   const classes = useStyles();
   const authorRef = useRef();
@@ -201,11 +201,7 @@ const Forum = (props) => {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={savePost}
-            >
+            <Button variant="outlined" color="primary" onClick={savePost}>
               <MessageIcon style={{ margin: "3" }} />
               Submit Post
             </Button>
