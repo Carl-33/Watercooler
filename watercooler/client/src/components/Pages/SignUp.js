@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import API from "../../utils/API";
-import { auth, generateUserDocument } from "../../firesbase";
+import { auth, generateUserDocument } from "../../firebase";
 
 function Copyright() {
   return (
@@ -51,8 +51,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const SignUp = () => {
-  const firstNameRef = useRef();
   const lastNameRef = useRef();
+  const firstNameRef = useRef();
+
   const companyRef = useRef();
   const locationRef = useRef();
   const emailRef = useRef();
@@ -67,10 +68,12 @@ const SignUp = () => {
     event.preventDefault();
     console.log("createUser");
     try{
-      const {user} = await auth.createUserWithEmailAndPasswordHandler(email, password);
-      generateUserDocument(user, {firstName});
+      const {user} = await auth.createUserWithEmailAndPassword(email, password);
+      console.log(user)
+      generateUserDocument(user, {firstName, lastName});
     }
     catch(error){
+      console.log(error)
       setError("Error signing in");
     }
     setEmail("");
@@ -85,10 +88,13 @@ const SignUp = () => {
       console.log("email is " + value)
     } else if (name === "userPassword") {
       setPassword(value);
+      console.log("password is " + value)
     } else if (name === "firstName") {
       setFirstName(value);
+      console.log("firstname is " + value)
     } else if (name === "lastName") {
       setLastName(value);
+      console.log("lastname is " + value)
     }
   };
     // const handleSubmit = (e) => {
@@ -132,6 +138,7 @@ const SignUp = () => {
                   fullWidth
                   id="firstName"
                   label="First Name"
+                  value={firstName}
                   onChange={event => onChangeHandler(event)}
                   required
                   inputRef={firstNameRef}
@@ -148,7 +155,8 @@ const SignUp = () => {
                   name="lastName"
                   required
                   inputRef={lastNameRef}
-                  autoComplete="lname"
+                  autoComplete="lastname"
+                  value={lastName}
                   onChange={event => onChangeHandler(event)}
                 />
               </Grid>
@@ -159,10 +167,10 @@ const SignUp = () => {
                   fullWidth
                   id="company"
                   label="Company"
-                  name="email"
+                  name="company"
                   required
                   inputRef={companyRef}
-                  autoComplete="email"
+                  autoComplete="company"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -172,10 +180,10 @@ const SignUp = () => {
                   fullWidth
                   id="location"
                   label="Location"
-                  name="email"
+                  name="location"
                   required
                   inputRef={locationRef}
-                  autoComplete="email"
+                  autoComplete="location"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -185,10 +193,11 @@ const SignUp = () => {
                   fullWidth
                   id="email"
                   label="Email Address"
-                  name="email"
+                  name="userEmail"
                   required
                   inputRef={emailRef}
                   autoComplete="email"
+                  value={email}
                   onChange={event => onChangeHandler(event)}
                 />
               </Grid>
@@ -197,7 +206,7 @@ const SignUp = () => {
                   variant="outlined"
                   required
                   fullWidth
-                  name="password"
+                  name="userPassword"
                   label="Password"
                   type="password"
                   id="password"

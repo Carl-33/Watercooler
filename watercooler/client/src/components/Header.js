@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -15,6 +15,7 @@ import "./Header.css";
 // import Link from "@material-ui/core/Link";
 import Link from "./Links";
 import LocationCityIcon from "@material-ui/icons/LocationCity";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,6 +73,9 @@ const Header = () => {
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             Watercooler
+          </Typography>
+          <Typography variant="h6" className={classes.title}>
+            farts
           </Typography>
           <Typography variant="h6" className={classes.title}>
             <Link

@@ -14,15 +14,6 @@ var firebaseConfig = {
     appId: "1:272854258776:web:779aeb179160242c53662d"
   };
 
-
-const provider = new firebase.auth.GoogleAuthProvider();
-
-
-export const signInWithGoogle = () => {
-    auth.signInWithPopup(provider);
-}
-
-
 export const generateUserDocument = async (user, additionalData) => {
     if(!user) return;
     const userRef = firestore.doc(`users/${user.uid}`);
@@ -43,7 +34,7 @@ export const generateUserDocument = async (user, additionalData) => {
     return getUserDocument(user.uid);
 };
 const getUserDocument = async uid => {
-    if(!uid) return null;
+    if (!uid) return null;
     try {
         const userDocument = await firestore.doc(`users/${uid}`).get();
         return {
@@ -55,6 +46,6 @@ const getUserDocument = async uid => {
     }
 };
 
-  firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
