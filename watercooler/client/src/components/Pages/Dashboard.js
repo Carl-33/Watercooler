@@ -48,8 +48,8 @@ const Dashboard = () => {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button variant="outlined" color="primary">
-              Amazon Forum
+            <Button variant="outlined" color="primary" href="/Forum">
+              My Company
             </Button>
           </Grid>
           <Grid item xs={8}>
@@ -60,8 +60,8 @@ const Dashboard = () => {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button variant="outlined" color="primary">
-              My Forum
+            <Button variant="outlined" color="primary" href="/Forum">
+              My Office
             </Button>
           </Grid>
           <Grid item xs>
