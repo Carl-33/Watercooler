@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useState } from "react";
-import { auth } from "../../firebase"
+import { auth } from "../../firebase";
 
 function Copyright() {
   return (
@@ -52,29 +52,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 const SignIn = () => {
   const classes = useStyles();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const signInWithEmailAndPasswordHandler = 
-    (event, email, password) => {
-      event.preventDefault();
-      console.log("welcome")
-      auth.signInWithEmailAndPassword(email, password).catch(error => {
-        console.log(email)
-        setError("uh oh, there was an error signing in with password and email");
-        console.error("uh oh, there was an error signing in with password and email", error);
-      });
-    };
-    const onChangeHandler = event => {
-      const { name, value } = event.currentTarget;
-      if (name === "userEmail") {
-        setEmail(value);
-      } else if (name === "userPassword") {
-        setPassword(value);
-      } 
-    };
-
-  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const signInWithEmailAndPasswordHandler = (event, email, password) => {
+    event.preventDefault();
+    console.log("welcome");
+    auth.signInWithEmailAndPassword(email, password).catch((error) => {
+      console.log(email);
+      setError("uh oh, there was an error signing in with password and email");
+      console.error(
+        "uh oh, there was an error signing in with password and email",
+        error
+      );
+    });
+  };
+  const onChangeHandler = (event) => {
+    const { name, value } = event.currentTarget;
+    if (name === "userEmail") {
+      setEmail(value);
+    } else if (name === "userPassword") {
+      setPassword(value);
+    }
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -96,7 +96,7 @@ const SignIn = () => {
                 id="email"
                 label="Email Address"
                 name="userEmail"
-                value = {email}
+                value={email}
                 type="email"
                 autoComplete="email"
                 onChange={(event) => onChangeHandler(event)}
@@ -123,7 +123,9 @@ const SignIn = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}
+            onClick={(event) => {
+              signInWithEmailAndPasswordHandler(event, email, password);
+            }}
           >
             Sign In
           </Button>
@@ -136,14 +138,6 @@ const SignIn = () => {
           </Grid>
         </form>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
       <br />
 
       <Box mt={5}>
