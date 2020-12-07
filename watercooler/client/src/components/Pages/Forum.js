@@ -51,11 +51,15 @@ const Forum = () => {
   const [author, setAuthor] = useState("John Smith");
   const [title, setTitle] = useState("Work Thoughts");
   const [body, setBody] = useState("What do you guys think about work?");
+  const [company, setCompany] = useState("Corporate, inc.");
+  const [location, setLocation] = useState("profits dept.")
   //input Ref to DB!
   const classes = useStyles();
   const authorRef = useRef();
   const titleRef = useRef();
   const bodyRef = useRef();
+  const companyRef = useRef();
+  const locationRef = useRef();
 
   const savePost = (e) => {
     e.preventDefault();
@@ -64,10 +68,14 @@ const Forum = () => {
       author: authorRef.current.value,
       title: titleRef.current.value,
       body: bodyRef.current.value,
+      company: companyRef.current.value,
+      location: locationRef.current.value,
     });
     authorRef.current.value = "";
     titleRef.current.value = "";
     bodyRef.current.value = "";
+    companyRef.current.value = "";
+    locationRef.current.value = "";
     window.location.reload();
   };
   console.log(savePost);
@@ -293,6 +301,36 @@ const Forum = () => {
                   console.log(e.target.value);
                 }}
                 inputRef={bodyRef}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                id="outlined-multiline-static"
+                label="Company"
+                rows={6}
+                required
+                defaultValue={company}
+                onChange={(e) => {
+                  setCompany(e.target.value);
+                  console.log(e.target.value);
+                }}
+                inputRef={companyRef}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                id="outlined-multiline-static"
+                label="Location"
+                rows={6}
+                required
+                defaultValue={location}
+                onChange={(e) => {
+                  setLocation(e.target.value);
+                  console.log(e.target.value);
+                }}
+                inputRef={locationRef}
                 variant="outlined"
               />
             </Grid>
