@@ -1,7 +1,7 @@
 body {
   /* background: radial-gradient(ellipse at bottom, #49678a 0%, #090a0f 100%); */
-  /* background: radial-gradient(ellipse at bottom, #ccdcf0 0%, #334557 100%); */
-  background: radial-gradient(ellipse at bottom, #9ebbcf 0%, #334557 100%);
+  background: radial-gradient(ellipse at bottom, #f3eff1 0%, #334557 100%);
+  /* background: radial-gradient(ellipse at bottom, #9ebbcf 0%, #334557 100%); */
 }
 h6 > a {
   color: black !important;

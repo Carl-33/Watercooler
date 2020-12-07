@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -18,6 +18,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import MessageIcon from "@material-ui/icons/Message";
 import API from "../../utils/API";
 import Comment from "../Comment";
+// import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 3),
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
+      color: "white",
       width: "45ch",
     },
   },
@@ -44,9 +46,12 @@ const useStyles = makeStyles((theme) => ({
 
 //Forum Default
 const Forum = () => {
-  //Set state for rendering comments //remember to import it
-  // const [comment, setComment] = useState([]);
-
+  const [comments, setComments] = useState([]);
+  //Set state for inputs
+  const [author, setAuthor] = useState("John Smith");
+  const [title, setTitle] = useState("Work Thoughts");
+  const [body, setBody] = useState("What do you guys think about work?");
+  //input Ref to DB!
   const classes = useStyles();
   const authorRef = useRef();
   const titleRef = useRef();
@@ -54,7 +59,7 @@ const Forum = () => {
 
   const savePost = (e) => {
     e.preventDefault();
-    console.log("hi!");
+    // console.log("hi!");
     API.createComment({
       author: authorRef.current.value,
       title: titleRef.current.value,
@@ -66,39 +71,46 @@ const Forum = () => {
   };
   console.log(savePost);
 
-  // eslint-disable-next-line
-  useEffect(async () => {
-    const comment = await API.getComments({
-      author: authorRef.current.value,
-      title: titleRef.current.value,
-      body: bodyRef.current.value,
-    });
+  // const renderComments = () => {
+  //   // API reqeuest for the DB
+  //   const render = () => {
+  //     let dbData = API.getComments();
+  //     let newComments = dbData.then((data) => data.data);
+  //     // let finalComments = newComments.then((data) => JSON.stringify(data));
+  //     return newComments;
+  //   };
 
-    console.log(comment);
+  //   render().then((newComments) => setComment(newComments));
+  //   //this works
+  //   // console.log("this is new comments" + setComment(newComments));
+  //   // console.log("just 77" + dbData.then((data) => console.log(data)));
+  //   // console.log("just 78" + comments.then((data) => console.log(data)));
+  //   console.log("just comments 79" + comments);
+  // };
+
+  // Useless, used for debugging, remove when done
+  useEffect(() => {
+    console.log(author);
+    console.log(title);
+    console.log(body);
+  }, [author, title, body]);
+
+  useEffect(() => {
+    // API reqeuest for the DB
+    (async () => {
+      let dbData = await API.getComments();
+      setComments(dbData.data);
+    })();
+    // render().then((newComments) => setComment(newComments));
+    console.log("just comments 79" + comments);
   }, []);
 
-  const comments = [
-    {
-      author: "John",
-      title: "Title",
-      body: "Body Body Body Body Body Body Body Body Body ",
-    },
-    {
-      author: "John",
-      title: "Title",
-      body: "Body Body Body Body Body Body Body Body Body",
-    },
-    {
-      author: "John",
-      title: "Title",
-      body: "Body Body Body Body Body Body Body Body Body",
-    },
-  ];
-
-  // const renderedComment = async (e, comments) => {
-  //   e.preventDefault();
-
-  // };
+  const handleNewComments = () => {
+    console.log(author, title, body);
+    const inputs = { author, title, body };
+    // setComments([...comments, inputs]);
+    console.log("line 102", [...comments, inputs]);
+  };
 
   return (
     <div className={classes.root}>
@@ -137,7 +149,9 @@ const Forum = () => {
             <CardActions>
               <Button
                 size="small"
-                onclick="window.location.href='https://dashboard.heroku.com/apps/sheltered-cliffs-91068'"
+                onClick={() =>
+                  "window.location.href='https://dashboard.heroku.com/apps/sheltered-cliffs-91068'"
+                }
                 color="primary"
               >
                 Share
@@ -209,9 +223,14 @@ const Forum = () => {
           </ListItem>
         </List>
         {/* Render comment component*/}
-        {comments.map((comment, i) => (
-          <Comment key={i} comment={comment} classes={classes} />
-        ))}
+        {console.log(comments[0], "comment")}
+        {comments !== undefined ? (
+          comments.map((comments, i) => (
+            <Comment key={i} comments={comments} classes={classes} />
+          ))
+        ) : (
+          <React.Fragment />
+        )}
       </Paper>
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
@@ -219,7 +238,7 @@ const Forum = () => {
             <Button
               variant="outlined"
               color="primary"
-              // onClick={(() => setComment(renderComments))}
+              onClick={handleNewComments}
             >
               <MessageIcon style={{ margin: "3" }} />
               Submit Post
@@ -232,9 +251,13 @@ const Forum = () => {
                 fullWidth
                 id="Name"
                 label="Name"
-                name="Name"
-                defaultValue="John Smith"
                 required
+                name="Name"
+                defaultValue={author}
+                onChange={(e) => {
+                  setAuthor(e.target.value);
+                  console.log(e.target.value);
+                }}
                 inputRef={authorRef}
                 autoComplete="lname"
               />
@@ -246,8 +269,12 @@ const Forum = () => {
                 id="title"
                 label="Title"
                 name="title"
-                defaultValue="Work Thoughts"
                 required
+                defaultValue={title}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                  console.log(e.target.value);
+                }}
                 inputRef={titleRef}
                 autoComplete="lname"
               />
@@ -258,8 +285,12 @@ const Forum = () => {
                 label="Comment"
                 multiline
                 rows={6}
-                defaultValue="What do you guys think about work?"
                 required
+                defaultValue={body}
+                onChange={(e) => {
+                  setBody(e.target.value);
+                  console.log(e.target.value);
+                }}
                 inputRef={bodyRef}
                 variant="outlined"
               />
