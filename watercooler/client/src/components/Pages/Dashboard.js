@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-
+import {UserContext} from "../../providers/UserProvider";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = () => {
   const classes = useStyles();
-
+  const userData = useContext(UserContext);
+  console.log(userData);
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -48,7 +49,7 @@ const Dashboard = () => {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button variant="outlined" color="primary" href="/Forum">
+            <Button variant="outlined" color="primary" href="/Forum" onClick={() => console.log(userData)}>
               My Company
             </Button>
           </Grid>
@@ -60,7 +61,7 @@ const Dashboard = () => {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button variant="outlined" color="primary" href="/Forum">
+            <Button variant="outlined" color="primary" href="/Forum" onClick={() => userData.setFromDashboard("location")}>
               My Office
             </Button>
           </Grid>
