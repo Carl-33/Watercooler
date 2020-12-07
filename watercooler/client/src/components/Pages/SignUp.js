@@ -63,6 +63,8 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [company, setCompany] = useState("");
+  const [location, setLocation] = useState("");
   const [error, setError] = useState(null);
   const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
     event.preventDefault();
@@ -70,7 +72,7 @@ const SignUp = () => {
     try{
       const {user} = await auth.createUserWithEmailAndPassword(email, password);
       console.log(user)
-      generateUserDocument(user, {firstName, lastName});
+      generateUserDocument(user, {firstName, lastName, company, location});
     }
     catch(error){
       console.log(error)
@@ -80,6 +82,8 @@ const SignUp = () => {
     setPassword("");
     setFirstName("");
     setLastName("");
+    setCompany("");
+    setLocation("");
   };
   const onChangeHandler = event => {
     const { name, value } = event.currentTarget;
@@ -95,6 +99,12 @@ const SignUp = () => {
     } else if (name === "lastName") {
       setLastName(value);
       console.log("lastname is " + value)
+    } else if (name === "userCompany") {
+      setCompany(value);
+      console.log("company is " + value)
+    } else if (name === "userLocation") {
+      setLocation(value);
+      console.log("location is " + value)
     }
   };
     // const handleSubmit = (e) => {
@@ -168,10 +178,12 @@ const SignUp = () => {
                   fullWidth
                   id="company"
                   label="Company"
-                  name="company"
+                  name="userCompany"
                   required
                   inputRef={companyRef}
                   autoComplete="company"
+                  onChange={event => onChangeHandler(event)}
+                  value={company}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -181,10 +193,12 @@ const SignUp = () => {
                   fullWidth
                   id="location"
                   label="Location"
-                  name="location"
+                  name="userLocation"
                   required
                   inputRef={locationRef}
                   autoComplete="location"
+                  onChange={event => onChangeHandler(event)}
+                  value={location}
                 />
               </Grid>
               <Grid item xs={12}>
