@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useState } from "react";
-import { auth } from "../../firesbase"
+import { auth } from "../../firebase"
 
 function Copyright() {
   return (
@@ -56,7 +56,7 @@ const SignIn = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const signInWithEmailAndPasswordHandler = 
-    (event,email, password) => {
+    (event, email, password) => {
       event.preventDefault();
       auth.signInWithEmailAndPasswordHandler(email, password).catch(error => {
         setError("uh oh, there was an error signing in with password and email");
