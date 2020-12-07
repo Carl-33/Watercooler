@@ -68,6 +68,7 @@ const Forum = () => {
     authorRef.current.value = "";
     titleRef.current.value = "";
     bodyRef.current.value = "";
+    window.location.reload();
   };
   console.log(savePost);
 
@@ -238,7 +239,7 @@ const Forum = () => {
             <Button
               variant="outlined"
               color="primary"
-              onClick={handleNewComments}
+              onClick={savePost}
             >
               <MessageIcon style={{ margin: "3" }} />
               Submit Post
