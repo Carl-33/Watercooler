@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -18,6 +18,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import MessageIcon from "@material-ui/icons/Message";
 import API from "../../utils/API";
 import Comment from "../Comment";
+import {UserContext} from "../../providers/UserProvider"
 // import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +46,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 //Forum Default
-const Forum = () => {
+const Forum = (props) => {
+  let redirected = !!props.from ? props.from : false;
+  console.log("From button: ", redirected)
+
+  // take prop and conditionally render Forum.js based on whether or not props is
+  // !!props.from 
   const [comments, setComments] = useState([]);
   //Set state for inputs
   const [author, setAuthor] = useState("John Smith");
@@ -121,6 +127,7 @@ const Forum = () => {
     console.log("line 102", [...comments, inputs]);
   };
 
+  // make if/else statement based on redirect variable
   return (
     <div className={classes.root}>
       <br />
@@ -232,7 +239,7 @@ const Forum = () => {
           </ListItem>
         </List>
         {/* Render comment component*/}
-        {console.log(comments[0], "comment")}
+        {console.log(comments, "comment")}
         {comments !== undefined ? (
           comments.map((comments, i) => (
             <Comment key={i} comments={comments} classes={classes} />

@@ -22,6 +22,12 @@ const App = () => {
         <Route path="/Forum">
           <Forum />
         </Route>
+        <Route path="/CompanyForum">
+          <Forum from="company" />
+        </Route>
+        <Route path="/LocationForum">
+          <Forum from="location" />
+        </Route>
         <Route path="/SignIn">
           <SignIn />
         </Route>
