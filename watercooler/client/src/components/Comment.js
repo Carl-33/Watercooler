@@ -4,28 +4,28 @@ import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 
-const Comment = (props) => {
+const Comment = ({ comments, classes }) => {
   return (
     <>
       <Divider variant="inset" />
       <ListItem alignItems="flex-start">
         <ListItemText
           // Title from db
-          primary={props.comment.title}
+          primary={comments.title}
           secondary={
             <React.Fragment>
               <Typography
                 component="span"
                 variant="body2"
-                className={props.classes.inline}
+                className={classes.inline}
                 color="textPrimary"
               >
                 {/* author from db*/}
-                {props.comment.author}
+                {comments.author}
               </Typography>
               --
               {/* //comments from db */}
-              {props.comment.body}
+              {comments.body}
             </React.Fragment>
           }
         />

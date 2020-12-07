@@ -10,6 +10,8 @@ import UserProvider from "./providers/UserProvider";
 
 
 const App = () => {
+  //Set state for rendering comments //remember to import it
+
   return (
     <div>
       <UserProvider>
