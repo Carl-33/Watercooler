@@ -58,7 +58,9 @@ const SignIn = () => {
   const signInWithEmailAndPasswordHandler = 
     (event, email, password) => {
       event.preventDefault();
-      auth.signInWithEmailAndPasswordHandler(email, password).catch(error => {
+      console.log("welcome")
+      auth.signInWithEmailAndPassword(email, password).catch(error => {
+        console.log(email)
         setError("uh oh, there was an error signing in with password and email");
         console.error("uh oh, there was an error signing in with password and email", error);
       });
