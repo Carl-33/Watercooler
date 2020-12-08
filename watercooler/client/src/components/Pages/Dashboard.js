@@ -34,7 +34,7 @@ const Dashboard = () => {
   console.log(userData);
   return (
     <div className={classes.root}>
-      <Paper className={classes.paper}>
+      {/* <Paper className={classes.paper}>
         <Grid
           container
           direction="row"
@@ -42,16 +42,16 @@ const Dashboard = () => {
           alignItems="stretch"
           spacing={5}
         >
-          <Grid item>
-            <Button variant="outlined" color="primary">
+          {/* <Grid item>
+            {/* <Button variant="outlined" color="primary">
               Search Forum
-            </Button>
-          </Grid>
+            </Button> */}
+          {/* </Grid>
           <Grid item xs zeroMinWidth>
             <Typography>Search for a forum</Typography>
-          </Grid>
-        </Grid>
-      </Paper>
+          </Grid> */}
+        {/* </Grid>
+      </Paper> */}
 
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
