@@ -53,7 +53,7 @@ const Dashboard = () => {
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
             <Button variant="outlined" color="primary" href="/CompanyForum">
-              My Company
+              {( userData.user === null ) ? "My Company" : userData.user.user.company } 
             </Button>
           </Grid>
           <Grid item xs={8}>
@@ -65,7 +65,7 @@ const Dashboard = () => {
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
             <Button variant="outlined" color="primary" href="/LocationForum">
-              My Office
+            {( userData.user === null ) ? "My Office" : userData.user.user.location} 
             </Button>
           </Grid>
           <Grid item xs>
