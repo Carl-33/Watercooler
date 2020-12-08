@@ -8,6 +8,7 @@ import SignUp from "./components/Pages/SignUp";
 import Dashboard from "./components/Pages/Dashboard";
 import UserProvider from "./providers/UserProvider";
 
+
 const App = () => {
   //Set state for rendering comments //remember to import it
 
