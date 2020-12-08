@@ -19,7 +19,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import MessageIcon from "@material-ui/icons/Message";
 import API from "../../utils/API";
 import Comment from "../Comment";
-import {UserContext} from "../../providers/UserProvider"
+import { UserContext } from "../../providers/UserProvider";
 // import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -51,15 +51,12 @@ const Forum = (props) => {
   let redirected = !!props.from ? props.from : false;
   const userData = useContext(UserContext);
 
-  // take prop and conditionally render Forum.js based on whether or not props is
-  // !!props.from 
   const [comments, setComments] = useState([]);
-  
   // setting userData to state when logged in
-  let authorName = (( userData.user === null ) ? "John Smith" : userData.user.user.firstName + " " + userData.user.user.lastName )
-  let companyName = (( userData.user === null ) ? "Corporate, inc" : userData.user.user.company )
-  let locationName = (( userData.user === null ) ? "Profits Dept." : userData.user.user.location )
-
+  let authorName =
+    userData.user === null
+      ? "John Smith"
+      : userData.user.user.firstName + "" + userData.user.user.lastName;
   //Set state for inputs
   const [author, setAuthor] = useState(authorName);
   const [title, setTitle] = useState("Work Thoughts");
@@ -92,7 +89,6 @@ const Forum = (props) => {
     window.location.reload();
   };
 
-
   // const renderComments = () => {
   //   // API reqeuest for the DB
   //   const render = () => {
@@ -110,7 +106,6 @@ const Forum = (props) => {
   //   console.log("just comments 79" + comments);
   // };
 
-
   const handleNewComments = () => {
     console.log(author, title, body);
     const inputs = { author, title, body };
@@ -118,23 +113,25 @@ const Forum = (props) => {
     console.log("line 102", [...comments, inputs]);
   };
 
-
-
   useEffect(() => {
     (async () => {
       let dbData = await API.getComments();
-      console.log(dbData.data)
-    if (redirected === "company" && userData.user) {
-      let companyComments = dbData.data.filter((comment) => comment.company === userData.user.user.company);
+      console.log(dbData.data);
+      if (redirected === "company" && userData.user) {
+        let companyComments = dbData.data.filter(
+          (comment) => comment.company === userData.user.user.company
+        );
         setComments(companyComments);
-    } else if (redirected === "location" && userData.user) {
-      let locationComments = dbData.data.filter((comment) => comment.location === userData.user.user.location);
+      } else if (redirected === "location" && userData.user) {
+        let locationComments = dbData.data.filter(
+          (comment) => comment.location === userData.user.user.location
+        );
         setComments(locationComments);
       } else {
-      setComments(dbData.data);
-    }})();
-  }, [userData])
-
+        setComments(dbData.data);
+      }
+    })();
+  }, [userData]);
 
   return (
     <div className={classes.root}>

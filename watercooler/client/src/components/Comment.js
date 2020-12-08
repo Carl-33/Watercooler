@@ -7,10 +7,11 @@ import Typography from "@material-ui/core/Typography";
 const Comment = ({ comments, classes }) => {
   return (
     <>
-      <Divider variant="inset" />
+      <Divider variant="full width" /> change lines 10, 14, 27, and 34
       <ListItem alignItems="flex-start">
         <ListItemText
           // Title from db
+          style={{color="primary"}}
           primary={comments.title}
           secondary={
             <React.Fragment>
@@ -23,14 +24,14 @@ const Comment = ({ comments, classes }) => {
                 {/* author from db*/}
                 {comments.author}
               </Typography>
-              --
+             {} -- {}
               {/* //comments from db */}
               {comments.body}
             </React.Fragment>
           }
         />
       </ListItem>
-      <Divider variant="inset" />
+      <Divider variant="full width" />
     </>
   );
 };
