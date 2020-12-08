@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Watercool from "../images/water-cooler-talk.png";
 import Grid from "@material-ui/core/Grid";
-import Wally from "../images/wally3.png";
+import Wally from "../images/wallyandcuppy.png";
 import Divider from "@material-ui/core/Divider";
 const useStyles = makeStyles({
   root: {
@@ -45,7 +45,7 @@ const About = () => {
               <CardMedia
                 component="img"
                 alt="Watercooler Talk"
-                height="350"
+                height="450"
                 image={Wally}
                 title="Watercooler Talk"
               />
