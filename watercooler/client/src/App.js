@@ -7,7 +7,6 @@ import SignIn from "./components/Pages/SignIn";
 import SignUp from "./components/Pages/SignUp";
 import Dashboard from "./components/Pages/Dashboard";
 import UserProvider from "./providers/UserProvider";
-import Footer from "./components/Footer";
 
 const App = () => {
   //Set state for rendering comments //remember to import it
@@ -37,7 +36,6 @@ const App = () => {
         <Route path="/Dashboard">
           <Dashboard />
         </Route>
-        <Footer />
       </UserProvider>
     </div>
   );
