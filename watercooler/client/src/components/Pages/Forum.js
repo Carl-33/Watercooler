@@ -159,7 +159,8 @@ const Forum = (props) => {
     if (userData.user === null) {
       console.log("nope")
     } else {
-
+      let locationComments = comments.filter((comment) => comment.location === userData.user.user.location);
+      console.log(locationComments);
     }
 
   }
