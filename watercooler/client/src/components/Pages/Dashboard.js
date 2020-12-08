@@ -5,6 +5,9 @@ import Grid from "@material-ui/core/Grid";
 import {UserContext} from "../../providers/UserProvider";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import Cuppy from "../images/justcuppy.png";
+import TinyCuppy from "../images/tinycuppy.png"
+import CardMedia from "@material-ui/core/CardMedia";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,6 +73,14 @@ const Dashboard = () => {
           </Grid>
         </Grid>
       </Paper>
+              <CardMedia
+                component="img"
+                alt="Watercooler Talk"
+                height="68px"
+                width="50px"
+                image={TinyCuppy}
+                title="Watercooler Talk"
+              />
       <br />
       <br />
       <br />
