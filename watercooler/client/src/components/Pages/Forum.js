@@ -22,8 +22,6 @@ import Comment from "../Comment";
 import {UserContext} from "../../providers/UserProvider"
 // import axios from "axios";
 
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -59,20 +57,11 @@ const Forum = (props) => {
   const [comments, setComments] = useState([]);
   console.log(comments);
   //Set state for inputs
-  
-  // first and last
-  let authorName = (( userData.user === null ) ? "John Smith" : userData.user.user.firstName + " " + userData.user.user.lastName )
-  let companyName = (( userData.user === null ) ? "Corporate, inc" : userData.user.user.company )
-  let locationName = (( userData.user === null ) ? "Profits Dept." : userData.user.user.location )
-
-
-  const [author, setAuthor] = useState(authorName);
+  const [author, setAuthor] = useState("John Smith");
   const [title, setTitle] = useState("Work Thoughts");
   const [body, setBody] = useState("What do you guys think about work?");
-  const [company, setCompany] = useState(companyName);
-  const [location, setLocation] = useState(locationName);
-
- 
+  const [company, setCompany] = useState("Corporate, inc.");
+  const [location, setLocation] = useState("profits dept.");
   //input Ref to DB!
   const classes = useStyles();
   const authorRef = useRef();
@@ -141,25 +130,24 @@ const Forum = (props) => {
     console.log("line 102", [...comments, inputs]);
   };
 
-//   const checkCompany = () => {
-//     for (let i = 0; i < comments.length; i++) {
-//       if (comments[i].company === userData.user.user.company) {
-//         // console.log(comments[i]);
-//         // console.log(i);
-//         return comments[i];
-//       };
-//     };
-//   };
+  const checkCompany = () => {
+    for (let i = 0; i < comments.length; i++) {
+      if (comments[i].company === userData.user.user.company) {
+        console.log(comments[i].company);
+        return comments[i];
+      };
+    };
+  };
 
-// checkCompany();
+checkCompany();
 
-  // // make if/else statement based on redirect variable
-  // if (redirected = "company") {
-  //   // let companyComments = comments.filter(checkCompany)
+  // make if/else statement based on redirect variable
+  if (redirected = company) {
+    comments.filter(checkCompany)
 
-  // } else if (redirected = location) {
+  } else if (redirected = location) {
 
-  // }
+  }
 
   return (
     <div className={classes.root}>
