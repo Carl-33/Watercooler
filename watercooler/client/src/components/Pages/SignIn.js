@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-const SignIn = () => {
+const SignIn = ({ setLoggedIn, loggedIn }) => {
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -126,9 +126,8 @@ const SignIn = () => {
             onClick={(event) => {
               signInWithEmailAndPasswordHandler(event, email, password);
             }}
-          >
-            Sign In
-          </Button>
+            onClick={() => setLoggedIn(!loggedIn)}
+          ></Button>
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="#" variant="body2">

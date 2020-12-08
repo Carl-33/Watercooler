@@ -19,7 +19,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import MessageIcon from "@material-ui/icons/Message";
 import API from "../../utils/API";
 import Comment from "../Comment";
-import {UserContext} from "../../providers/UserProvider"
+import { UserContext } from "../../providers/UserProvider";
 // import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -49,11 +49,11 @@ const useStyles = makeStyles((theme) => ({
 //Forum Default
 const Forum = (props) => {
   let redirected = !!props.from ? props.from : false;
-  console.log("From button: ", redirected)
+  console.log("From button: ", redirected);
   const userData = useContext(UserContext);
 
   // take prop and conditionally render Forum.js based on whether or not props is
-  // !!props.from 
+  // !!props.from
   const [comments, setComments] = useState([]);
   console.log(comments);
   //Set state for inputs
@@ -87,7 +87,6 @@ const Forum = (props) => {
     locationRef.current.value = "";
     window.location.reload();
   };
-
 
   // const renderComments = () => {
   //   // API reqeuest for the DB
@@ -130,24 +129,24 @@ const Forum = (props) => {
     console.log("line 102", [...comments, inputs]);
   };
 
-  const checkCompany = () => {
-    for (let i = 0; i < comments.length; i++) {
-      if (comments[i].company === userData.user.user.company) {
-        console.log(comments[i].company);
-        return comments[i];
-      };
-    };
-  };
+  //   const checkCompany = () => {
+  //     for (let i = 0; i < comments.length; i++) {
+  //       if (comments[i].company === userData.user.user.company) {
+  //         console.log(comments[i].company);
+  //         return comments[i];
+  //       };
+  //     };
+  //   };
 
-checkCompany();
+  // checkCompany();
 
-  // make if/else statement based on redirect variable
-  if (redirected = company) {
-    comments.filter(checkCompany)
+  //   // make if/else statement based on redirect variable
+  //   if (redirected = company) {
+  //     comments.filter(checkCompany)
 
-  } else if (redirected = location) {
+  //   } else if (redirected = location) {
 
-  }
+  //   }
 
   return (
     <div className={classes.root}>
