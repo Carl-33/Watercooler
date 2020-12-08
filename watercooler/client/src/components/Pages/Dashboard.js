@@ -7,10 +7,12 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Wally from "../images/wallyandcuppy.png";
 import CardMedia from "@material-ui/core/CardMedia";
-import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import Divider from "@material-ui/core/Divider";
+import Card from "@material-ui/core/Card";
+import Cuppy from "../images/justcuppy.png";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -65,6 +67,7 @@ const Dashboard = () => {
           </Grid>
         </Grid>
       </Paper>
+
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
@@ -79,26 +82,23 @@ const Dashboard = () => {
           </Grid>
         </Grid>
       </Paper>
-      <Grid item sm={6}>
-        <Card style={{ marginLeft: 400, width: 450 }} className={classes.root}>
-          <CardContent>
-            <Typography gutterBottom variant="h3" align="center" component="h2">
-              Watercooler Dashboard
-            </Typography>
-            <Divider />
-          </CardContent>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="Watercooler Talk"
-              height="400"
-              image={Wally}
-              title="TinyCuppy"
-            />
-          </CardActionArea>
-        </Card>
-      </Grid>
-
+      <Paper className={classes.paper}>
+        <Grid item>
+          <Card>
+            <CardActionArea>
+              <CardContent>
+                <CardMedia
+                  component="img"
+                  alt="Watercooler Talk"
+                  height="600px"
+                  image={Cuppy}
+                  title="Watercooler Talk"
+                />
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+      </Paper>
       <br />
       <br />
       <br />

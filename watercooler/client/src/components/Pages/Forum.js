@@ -11,8 +11,8 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Wally from "../images/wally3.png";
-import Cuppy from "../images/justcuppy.png";
-import List from "@material-ui/core/List";
+
+// import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -54,12 +54,23 @@ const Forum = (props) => {
   // take prop and conditionally render Forum.js based on whether or not props is
   // !!props.from
   const [comments, setComments] = useState([]);
+
+  // setting userData to state when logged in
+  let authorName =
+    userData.user === null
+      ? "John Smith"
+      : userData.user.user.firstName + " " + userData.user.user.lastName;
+  let companyName =
+    userData.user === null ? "Corporate, inc" : userData.user.user.company;
+  let locationName =
+    userData.user === null ? "Profits Dept." : userData.user.user.location;
+
   //Set state for inputs
-  const [author, setAuthor] = useState("John Smith");
+  const [author, setAuthor] = useState(authorName);
   const [title, setTitle] = useState("Work Thoughts");
   const [body, setBody] = useState("What do you guys think about work?");
-  const [company, setCompany] = useState("Corporate, inc.");
-  const [location, setLocation] = useState("profits dept.");
+  const [company, setCompany] = useState(companyName);
+  const [location, setLocation] = useState(locationName);
   //input Ref to DB!
   const classes = useStyles();
   const authorRef = useRef();
