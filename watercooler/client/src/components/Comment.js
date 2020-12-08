@@ -7,9 +7,10 @@ import Typography from "@material-ui/core/Typography";
 const Comment = ({ comments, classes }) => {
   return (
     <>
-      <Divider variant="inset" />
+      <Divider variant="full width" />
       <ListItem alignItems="flex-start">
         <ListItemText
+          style={{ color: "darkblue" }}
           // Title from db
           primary={comments.title}
           secondary={
@@ -21,16 +22,16 @@ const Comment = ({ comments, classes }) => {
                 color="textPrimary"
               >
                 {/* author from db*/}
-                {comments.author}
+                {`${comments.author}`}
               </Typography>
-              --
+              {} -- {}
               {/* //comments from db */}
-              {comments.body}
+              {`${comments.body}`}
             </React.Fragment>
           }
         />
       </ListItem>
-      <Divider variant="inset" />
+      <Divider variant="full width" />
     </>
   );
 };
