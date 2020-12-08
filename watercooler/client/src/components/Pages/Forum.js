@@ -49,13 +49,11 @@ const useStyles = makeStyles((theme) => ({
 //Forum Default
 const Forum = (props) => {
   let redirected = !!props.from ? props.from : false;
-  console.log("From button: ", redirected)
   const userData = useContext(UserContext);
 
   // take prop and conditionally render Forum.js based on whether or not props is
   // !!props.from 
   const [comments, setComments] = useState([]);
-  console.log(comments);
   //Set state for inputs
   const [author, setAuthor] = useState("John Smith");
   const [title, setTitle] = useState("Work Thoughts");
@@ -106,22 +104,6 @@ const Forum = (props) => {
   //   console.log("just comments 79" + comments);
   // };
 
-  // Useless, used for debugging, remove when done
-  useEffect(() => {
-    console.log(author);
-    console.log(title);
-    console.log(body);
-  }, [author, title, body]);
-
-  useEffect(() => {
-    // API reqeuest for the DB
-    (async () => {
-      let dbData = await API.getComments();
-      setComments(dbData.data);
-    })();
-    // render().then((newComments) => setComment(newComments));
-    console.log("just comments 79" + comments);
-  }, []);
 
   const handleNewComments = () => {
     console.log(author, title, body);
@@ -130,24 +112,23 @@ const Forum = (props) => {
     console.log("line 102", [...comments, inputs]);
   };
 
-  const checkCompany = () => {
-    for (let i = 0; i < comments.length; i++) {
-      if (comments[i].company === userData.user.user.company) {
-        console.log(comments[i].company);
-        return comments[i];
-      };
-    };
-  };
 
-checkCompany();
 
-  // make if/else statement based on redirect variable
-  if (redirected = company) {
-    comments.filter(checkCompany)
+  useEffect(() => {
+    (async () => {
+      let dbData = await API.getComments();
+      console.log(dbData.data)
+    if (redirected === "company" && userData.user) {
+      let companyComments = dbData.data.filter((comment) => comment.company === userData.user.user.company);
+        setComments(companyComments);
+    } else if (redirected === "location" && userData.user) {
+      let locationComments = dbData.data.filter((comment) => comment.location === userData.user.user.location);
+        setComments(locationComments);
+      } else {
+      setComments(dbData.data);
+    }})();
+  }, [userData])
 
-  } else if (redirected = location) {
-
-  }
 
   return (
     <div className={classes.root}>
