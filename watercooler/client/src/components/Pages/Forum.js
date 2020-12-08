@@ -132,7 +132,11 @@ const Forum = (props) => {
         setComments(locationComments);
       } else {
       setComments(dbData.data);
-    }})();
+    }
+    authorRef.current.value = (( userData.user === null ) ? "John Smith" : userData.user.user.firstName + " " + userData.user.user.lastName )
+    companyRef.current.value = (( userData.user === null ) ? "Corporate, inc" : userData.user.user.company )
+    locationRef.current.value = (( userData.user === null ) ? "Profits Dept." : userData.user.user.location )
+  })();
   }, [userData])
 
 
