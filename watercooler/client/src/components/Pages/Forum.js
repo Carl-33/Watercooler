@@ -52,6 +52,7 @@ const Forum = (props) => {
   console.log("From button: ", redirected)
   const userData = useContext(UserContext);
 
+
   // take prop and conditionally render Forum.js based on whether or not props is
   // !!props.from 
   const [comments, setComments] = useState([]);
@@ -131,21 +132,35 @@ const Forum = (props) => {
   };
 
   const checkCompany = () => {
+    if (userData.user === null) {
+      console.log("nope")
+    } else {
     for (let i = 0; i < comments.length; i++) {
       if (comments[i].company === userData.user.user.company) {
-        console.log(comments[i].company);
-        return comments[i];
+        console.log(comments[i])
+        return (comments[i].company === userData.user.user.company)
+      };
       };
     };
-  };
+  }
 
-checkCompany();
 
   // make if/else statement based on redirect variable
-  if (redirected = company) {
-    comments.filter(checkCompany)
+  if (redirected === "company") {
+    if (userData.user === null) {
+      console.log("nope")
+    } else {
+      let companyComments = comments.filter((comment) => comment.company === userData.user.user.company);
+      console.log(companyComments);
+    }
+    
 
-  } else if (redirected = location) {
+  } else if (redirected === "location") {
+    if (userData.user === null) {
+      console.log("nope")
+    } else {
+
+    }
 
   }
 
