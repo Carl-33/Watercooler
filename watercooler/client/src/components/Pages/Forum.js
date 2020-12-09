@@ -20,6 +20,7 @@ import MessageIcon from "@material-ui/icons/Message";
 import API from "../../utils/API";
 import Comment from "../Comment";
 import {UserContext} from "../../providers/UserProvider"
+import { Link } from "react-router-dom";
 // import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -90,7 +91,7 @@ const Forum = (props) => {
     bodyRef.current.value = "";
     companyRef.current.value = "";
     locationRef.current.value = "";
-    window.location.reload();
+    // window.location.reload();
   };
 
 
@@ -202,7 +203,7 @@ const Forum = (props) => {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button variant="outlined" color="primary" onClick={savePost}>
+            <Button component={Link} variant="outlined" color="primary" onClick={savePost} to="/Forum">
               <MessageIcon style={{ margin: "3" }} />
               Submit Post
             </Button>
