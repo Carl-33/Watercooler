@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
+import { Redirect } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -51,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
 const Forum = (props) => {
   let redirected = !!props.from ? props.from : false;
   const userData = useContext(UserContext);
-  console.log(userData);
 
   // take prop and conditionally render Forum.js based on whether or not props is
   // !!props.from 
@@ -86,12 +86,18 @@ const Forum = (props) => {
       company: companyRef.current.value,
       location: locationRef.current.value,
     });
+    setComments([...comments, {
+      author: authorRef.current.value,
+      title: titleRef.current.value,
+      body: bodyRef.current.value,
+      company: companyRef.current.value,
+      location: locationRef.current.value,
+    }])
     authorRef.current.value = "";
     titleRef.current.value = "";
     bodyRef.current.value = "";
     companyRef.current.value = "";
     locationRef.current.value = "";
-    window.location.reload(true);
   };
 
 
