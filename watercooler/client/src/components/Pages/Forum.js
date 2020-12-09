@@ -22,6 +22,10 @@ import Comment from "../Comment";
 import { UserContext } from "../../providers/UserProvider";
 // import axios from "axios";
 
+// const rightAway = () => {
+//   const userData = useContext()
+// }
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -58,16 +62,9 @@ const Forum = (props) => {
       ? "John Smith"
       : userData.user.user.firstName + "" + userData.user.user.lastName;
   //Set state for inputs
-  const [author, setAuthor] = useState(authorName);
-  const [title, setTitle] = useState("Work Thoughts");
-  const [body, setBody] = useState("What do you guys think about work?");
-  const [company, setCompany] = useState(companyName);
-  const [location, setLocation] = useState(locationName);
-  ////
-  ////
   const [author, setAuthor] = useState("");
-  const [title, setTitle] = useState("Work Thoughts");
-  const [body, setBody] = useState("What do you guys think about work?");
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
   const [company, setCompany] = useState("");
   const [location, setLocation] = useState("");
   //input Ref to DB!
@@ -123,7 +120,6 @@ const Forum = (props) => {
   useEffect(() => {
     (async () => {
       let dbData = await API.getComments();
-      console.log(dbData.data);
       if (redirected === "company" && userData.user) {
         let companyComments = dbData.data.filter(
           (comment) => comment.company === userData.user.user.company
