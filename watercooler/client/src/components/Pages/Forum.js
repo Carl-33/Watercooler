@@ -22,10 +22,6 @@ import Comment from "../Comment";
 import { UserContext } from "../../providers/UserProvider";
 // import axios from "axios";
 
-// const rightAway = () => {
-//   const userData = useContext()
-// }
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -54,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
 const Forum = (props) => {
   let redirected = !!props.from ? props.from : false;
   const userData = useContext(UserContext);
+  console.log(userData);
 
   const [comments, setComments] = useState([]);
   // setting userData to state when logged in
@@ -62,11 +59,11 @@ const Forum = (props) => {
       ? "John Smith"
       : userData.user.user.firstName + "" + userData.user.user.lastName;
   //Set state for inputs
-  const [author, setAuthor] = useState("");
+  const [author, setAuthor] = useState(authorName);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [company, setCompany] = useState("");
-  const [location, setLocation] = useState("");
+  const [company, setCompany] = useState(companyName);
+  const [location, setLocation] = useState(locationName);
   //input Ref to DB!
   const classes = useStyles();
   const authorRef = useRef();
@@ -298,5 +295,6 @@ const Forum = (props) => {
     </div>
   );
 };
+
 
 export default Forum;
