@@ -91,7 +91,7 @@ const Forum = (props) => {
     bodyRef.current.value = "";
     companyRef.current.value = "";
     locationRef.current.value = "";
-    // window.location.reload();
+    window.location.reload(true);
   };
 
 
@@ -203,7 +203,7 @@ const Forum = (props) => {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button component={Link} variant="outlined" color="primary" onClick={savePost} to="/Forum">
+            <Button variant="outlined" color="primary" onClick={savePost}>
               <MessageIcon style={{ margin: "3" }} />
               Submit Post
             </Button>
