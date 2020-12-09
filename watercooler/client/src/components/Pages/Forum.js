@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
+import { Redirect } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -19,7 +20,12 @@ import ListItemText from "@material-ui/core/ListItemText";
 import MessageIcon from "@material-ui/icons/Message";
 import API from "../../utils/API";
 import Comment from "../Comment";
+<<<<<<< HEAD
 import { UserContext } from "../../providers/UserProvider";
+=======
+import {UserContext} from "../../providers/UserProvider"
+import { Link } from "react-router-dom";
+>>>>>>> 602a372a3e1bb213246be9546c3fd1a3dc1b6d3a
 // import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -50,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
 const Forum = (props) => {
   let redirected = !!props.from ? props.from : false;
   const userData = useContext(UserContext);
-  console.log(userData);
 
   const [comments, setComments] = useState([]);
   // setting userData to state when logged in
@@ -82,12 +87,18 @@ const Forum = (props) => {
       company: companyRef.current.value,
       location: locationRef.current.value,
     });
+    setComments([...comments, {
+      author: authorRef.current.value,
+      title: titleRef.current.value,
+      body: bodyRef.current.value,
+      company: companyRef.current.value,
+      location: locationRef.current.value,
+    }])
     authorRef.current.value = "";
     titleRef.current.value = "";
     bodyRef.current.value = "";
     companyRef.current.value = "";
     locationRef.current.value = "";
-    window.location.reload();
   };
 
   // const renderComments = () => {
