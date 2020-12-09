@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Header from "./components/Header";
 import Route from "./components/Route";
 import About from "./components/Pages/About";
@@ -8,6 +8,20 @@ import SignUp from "./components/Pages/SignUp";
 import Dashboard from "./components/Pages/Dashboard";
 import UserProvider from "./providers/UserProvider";
 
+// class App extends Component {
+//   static propTypes = {
+//     children: this.propTypes.node
+//   }
+
+//   render() {
+//     const { children } = this.props
+//     return (
+//       <div>
+//         {children}
+//       </div>
+//     )
+//   }
+// }
 
 const App = () => {
   //Set state for rendering comments //remember to import it
