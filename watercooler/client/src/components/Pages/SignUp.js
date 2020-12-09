@@ -66,16 +66,23 @@ const SignUp = () => {
   const [company, setCompany] = useState("");
   const [location, setLocation] = useState("");
   const [error, setError] = useState(null);
-  const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
+  const createUserWithEmailAndPasswordHandler = async (
+    event,
+    email,
+    password,
+    company
+  ) => {
     event.preventDefault();
     console.log("createUser");
-    try{
-      const {user} = await auth.createUserWithEmailAndPassword(email, password);
-      console.log(user)
-      generateUserDocument(user, {firstName, lastName, company, location});
-    }
-    catch(error){
-      console.log(error)
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      console.log("TEST", firstName + company);
+      generateUserDocument(user, { firstName, lastName, company, location });
+    } catch (error) {
+      console.log(error);
       setError("Error signing in");
     }
     setEmail("");
@@ -85,189 +92,190 @@ const SignUp = () => {
     setCompany("");
     setLocation("");
   };
-  const onChangeHandler = event => {
+  const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
+    console.log(name);
     if (name === "userEmail") {
       setEmail(value);
-      console.log("email is " + value)
+      console.log("email is " + value);
     } else if (name === "userPassword") {
       setPassword(value);
-      console.log("password is " + value)
+      console.log("password is " + value);
     } else if (name === "firstName") {
       setFirstName(value);
-      console.log("firstname is " + value)
+      console.log("firstname is " + value);
     } else if (name === "lastName") {
       setLastName(value);
-      console.log("lastname is " + value)
+      console.log("lastname is " + value);
     } else if (name === "userCompany") {
       setCompany(value);
-      console.log("company is " + value)
+      console.log("company is " + name + value);
     } else if (name === "userLocation") {
       setLocation(value);
-      console.log("location is " + value)
+      console.log("location is " + value);
     }
   };
-    // const handleSubmit = (e) => {
-    //   e.preventDefault();
-    //   console.log("hi!");
-    //   console.log(firstNameRef.current.value);
-    //   API.saveUser({
-    //     firstName: firstNameRef.current.value,
-    //     lastName: lastNameRef.current.value,
-    //     company: companyRef.current.value,
-    //     location: locationRef.current.value,
-    //     email: emailRef.current.value,
-    //     password: passwordRef.current.value,
-    //   });
-    //   firstNameRef.current.value = "";
-    //   lastNameRef.current.value = "";
-    //   companyRef.current.value = "";
-    //   locationRef.current.value = "";
-    //   emailRef.current.value = "";
-    //   passwordRef.current.value = "";
-    // };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("hi!");
+  //   console.log(firstNameRef.current.value);
+  //   API.saveUser({
+  //     firstName: firstNameRef.current.value,
+  //     lastName: lastNameRef.current.value,
+  //     company: companyRef.current.value,
+  //     location: locationRef.current.value,
+  //     email: emailRef.current.value,
+  //     password: passwordRef.current.value,
+  //   });
+  //   firstNameRef.current.value = "";
+  //   lastNameRef.current.value = "";
+  //   companyRef.current.value = "";
+  //   locationRef.current.value = "";
+  //   emailRef.current.value = "";
+  //   passwordRef.current.value = "";
+  // };
 
-    return (
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign up
         </Typography>
 
-          <form className={classes.form} noValidate>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="fname"
-                  name="firstName"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  value={firstName}
-                  onChange={event => onChangeHandler(event)}
-                  required
-                  inputRef={firstNameRef}
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  required
-                  inputRef={lastNameRef}
-                  autoComplete="lastname"
-                  value={lastName}
-                  onChange={event => onChangeHandler(event)}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="company"
-                  label="Company"
-                  name="userCompany"
-                  required
-                  inputRef={companyRef}
-                  autoComplete="company"
-                  onChange={event => onChangeHandler(event)}
-                  value={company}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="location"
-                  label="Location"
-                  name="userLocation"
-                  required
-                  inputRef={locationRef}
-                  autoComplete="location"
-                  onChange={event => onChangeHandler(event)}
-                  value={location}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="userEmail"
-                  required
-                  inputRef={emailRef}
-                  autoComplete="email"
-                  value={email}
-                  onChange={event => onChangeHandler(event)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="userPassword"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  required
-                  inputRef={passwordRef}
-                  autoComplete="current-password"
-                  onChange={event => onChangeHandler(event)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
+        <form className={classes.form} noValidate>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="fname"
+                name="firstName"
+                variant="outlined"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                value={firstName}
+                onChange={(event) => onChangeHandler(event)}
+                required
+                inputRef={firstNameRef}
+                autoFocus
+              />
             </Grid>
-            <Button
-              // type="submit"
-              // onClick={handleSubmit}
-              onClick={event => {
-                createUserWithEmailAndPasswordHandler(event, email, password);
-              }}
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign Up
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                required
+                inputRef={lastNameRef}
+                autoComplete="lastname"
+                value={lastName}
+                onChange={(event) => onChangeHandler(event)}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="company"
+                label="Company"
+                name="userCompany"
+                required
+                inputRef={companyRef}
+                autoComplete="company"
+                onChange={(event) => onChangeHandler(event)}
+                value={company}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="location"
+                label="Location"
+                name="userLocation"
+                required
+                inputRef={locationRef}
+                autoComplete="location"
+                onChange={(event) => onChangeHandler(event)}
+                value={location}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="userEmail"
+                required
+                inputRef={emailRef}
+                autoComplete="email"
+                value={email}
+                onChange={(event) => onChangeHandler(event)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="userPassword"
+                label="Password"
+                type="password"
+                id="password"
+                required
+                inputRef={passwordRef}
+                autoComplete="current-password"
+                onChange={(event) => onChangeHandler(event)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={<Checkbox value="allowExtraEmails" color="primary" />}
+                label="I want to receive inspiration, marketing promotions and updates via email."
+              />
+            </Grid>
+          </Grid>
+          <Button
+            // type="submit"
+            // onClick={handleSubmit}
+            onClick={(event) => {
+              createUserWithEmailAndPasswordHandler(event, email, password);
+            }}
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Sign Up
           </Button>
-            <Grid container justify="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Link href="#" variant="body2">
+                Already have an account? Sign in
               </Link>
-              </Grid>
             </Grid>
-          </form>
-        </div>
-        <Box mt={5}>
-          <Copyright />
-        </Box>
-      </Container>
-    );
-  };
+          </Grid>
+        </form>
+      </div>
+      <Box mt={5}>
+        <Copyright />
+      </Box>
+    </Container>
+  );
+};
 
-  export default SignUp;
+export default SignUp;
 
 // function CreatePostForm() {
 //   const titleRef = useRef();

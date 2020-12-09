@@ -63,6 +63,13 @@ const Forum = (props) => {
   const [body, setBody] = useState("What do you guys think about work?");
   const [company, setCompany] = useState(companyName);
   const [location, setLocation] = useState(locationName);
+  ////
+  ////
+  const [author, setAuthor] = useState("");
+  const [title, setTitle] = useState("Work Thoughts");
+  const [body, setBody] = useState("What do you guys think about work?");
+  const [company, setCompany] = useState("");
+  const [location, setLocation] = useState("");
   //input Ref to DB!
   const classes = useStyles();
   const authorRef = useRef();
@@ -130,6 +137,14 @@ const Forum = (props) => {
       } else {
         setComments(dbData.data);
       }
+      authorRef.current.value =
+        userData.user === null
+          ? "John Smith"
+          : userData.user.user.firstName + " " + userData.user.user.lastName;
+      companyRef.current.value =
+        userData.user === null ? "Corporate, inc" : userData.user.user.company;
+      locationRef.current.value =
+        userData.user === null ? "Profits Dept." : userData.user.user.location;
     })();
   }, [userData]);
 
