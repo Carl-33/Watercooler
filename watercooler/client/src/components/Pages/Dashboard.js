@@ -1,4 +1,5 @@
 import React, {useContext} from "react";
+import Link from "../Links"
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -56,7 +57,7 @@ const Dashboard = () => {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button variant="outlined" color="primary" href="/CompanyForum">
+            <Button component={Link} variant="outlined" color="primary" href="/CompanyForum">
               {( userData.user === null ) ? "My Company" : userData.user.user.company } 
             </Button>
           </Grid>
@@ -69,7 +70,7 @@ const Dashboard = () => {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button variant="outlined" color="primary" href="/LocationForum">
+            <Button component={Link} variant="outlined" color="primary" href="/LocationForum">
             {( userData.user === null ) ? "My Office" : userData.user.user.location} 
             </Button>
           </Grid>
