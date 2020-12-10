@@ -20,14 +20,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import MessageIcon from "@material-ui/icons/Message";
 import API from "../../utils/API";
 import Comment from "../Comment";
-<<<<<<< HEAD
-import { UserContext } from "../../providers/UserProvider";
-=======
 import {UserContext} from "../../providers/UserProvider"
 import { Link } from "react-router-dom";
->>>>>>> 602a372a3e1bb213246be9546c3fd1a3dc1b6d3a
 // import axios from "axios";
-
+  
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
