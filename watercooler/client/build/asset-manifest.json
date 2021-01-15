@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6289bdd4.chunk.css",
+    "main.js": "/static/js/main.fab8fbe4.chunk.js",
+    "main.js.map": "/static/js/main.fab8fbe4.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.992eac29.js",
+    "runtime-main.js.map": "/static/js/runtime-main.992eac29.js.map",
+    "static/js/2.b1d6a18d.chunk.js": "/static/js/2.b1d6a18d.chunk.js",
+    "static/js/2.b1d6a18d.chunk.js.map": "/static/js/2.b1d6a18d.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.c9aadd47e1409b02f6111b96bd6b5051.js": "/precache-manifest.c9aadd47e1409b02f6111b96bd6b5051.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.6289bdd4.chunk.css.map": "/static/css/main.6289bdd4.chunk.css.map",
+    "static/js/2.b1d6a18d.chunk.js.LICENSE.txt": "/static/js/2.b1d6a18d.chunk.js.LICENSE.txt",
+    "static/media/justcuppy.png": "/static/media/justcuppy.502f8378.png",
+    "static/media/wally3.png": "/static/media/wally3.6fd2d1d6.png",
+    "static/media/wallyandcuppy.png": "/static/media/wallyandcuppy.f61ab255.png",
+    "static/media/water-cooler-talk.png": "/static/media/water-cooler-talk.bb702239.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.992eac29.js",
+    "static/js/2.b1d6a18d.chunk.js",
+    "static/css/main.6289bdd4.chunk.css",
+    "static/js/main.fab8fbe4.chunk.js"
+  ]
+}
