@@ -20,10 +20,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import MessageIcon from "@material-ui/icons/Message";
 import API from "../../utils/API";
 import Comment from "../Comment";
-import {UserContext} from "../../providers/UserProvider"
+import { UserContext } from "../../providers/UserProvider";
 import { Link } from "react-router-dom";
 // import axios from "axios";
-  
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -63,8 +63,8 @@ const Forum = (props) => {
   const [author, setAuthor] = useState(authorName);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [company, setCompany] = useState(companyName);
-  const [location, setLocation] = useState(locationName);
+  const [company, setCompany] = useState(company);
+  const [location, setLocation] = useState(location);
   //input Ref to DB!
   const classes = useStyles();
   const authorRef = useRef();
@@ -83,13 +83,16 @@ const Forum = (props) => {
       company: companyRef.current.value,
       location: locationRef.current.value,
     });
-    setComments([...comments, {
-      author: authorRef.current.value,
-      title: titleRef.current.value,
-      body: bodyRef.current.value,
-      company: companyRef.current.value,
-      location: locationRef.current.value,
-    }])
+    setComments([
+      ...comments,
+      {
+        author: authorRef.current.value,
+        title: titleRef.current.value,
+        body: bodyRef.current.value,
+        company: companyRef.current.value,
+        location: locationRef.current.value,
+      },
+    ]);
     authorRef.current.value = "";
     titleRef.current.value = "";
     bodyRef.current.value = "";
@@ -272,7 +275,7 @@ const Forum = (props) => {
                 label="Company"
                 rows={6}
                 required
-                defaultValue={company}
+                defaultValue="Company"
                 onChange={(e) => {
                   setCompany(e.target.value);
                   console.log(e.target.value);
@@ -287,7 +290,7 @@ const Forum = (props) => {
                 label="Location"
                 rows={6}
                 required
-                defaultValue={location}
+                defaultValue="location"
                 onChange={(e) => {
                   setLocation(e.target.value);
                   console.log(e.target.value);
@@ -302,6 +305,5 @@ const Forum = (props) => {
     </div>
   );
 };
-
 
 export default Forum;
