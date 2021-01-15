@@ -1,13 +1,13 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import {UserContext} from "../../providers/UserProvider";
+import { UserContext } from "../../providers/UserProvider";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Cuppy from "../images/justcuppy.png";
-import TinyCuppy from "../images/tinycuppy.png"
+import TinyCuppy from "../images/tinycuppy.png";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -47,22 +47,31 @@ const Dashboard = () => {
             {/* <Button variant="outlined" color="primary">
               Search Forum
             </Button> */}
-          {/* </Grid>
+      {/* </Grid>
           <Grid item xs zeroMinWidth>
             <Typography>Search for a forum</Typography>
           </Grid> */}
-        {/* </Grid>
+      {/* </Grid>
       </Paper> */}
 
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button component={Link} variant="outlined" color="primary" to="/CompanyForum">
-              {( userData.user === null ) ? "My Company" : userData.user.user.company } 
+            <Button
+              component={Link}
+              variant="outlined"
+              color="primary"
+              to="/CompanyForum"
+            >
+              {userData.user === null
+                ? "My Company"
+                : userData.user.user.company}
             </Button>
           </Grid>
           <Grid item xs={8}>
-            <Typography>See what your peers have to say about your company</Typography>
+            <Typography>
+              See what your peers have to say about your company
+            </Typography>
           </Grid>
         </Grid>
       </Paper>
@@ -70,33 +79,42 @@ const Dashboard = () => {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Button component={Link} variant="outlined" color="primary" to="/LocationForum">
-            {( userData.user === null ) ? "My Office" : userData.user.user.location} 
+            <Button
+              component={Link}
+              variant="outlined"
+              color="primary"
+              to="/LocationForum"
+            >
+              {userData.user === null
+                ? "My Office"
+                : userData.user.user.location}
             </Button>
           </Grid>
           <Grid item xs>
-            <Typography>See what people at your office are talking about</Typography>
+            <Typography>
+              See what people at your office are talking about
+            </Typography>
           </Grid>
         </Grid>
-        </Paper>
-      
-        <Paper className={classes.paper}>
-          <Grid item>
-            <Card>
+      </Paper>
+
+      <Paper className={classes.paper}>
+        <Grid item>
+          <Card>
             <CardActionArea>
               <CardContent>
-              <CardMedia
+                <CardMedia
                   component="img"
                   alt="Watercooler Talk"
                   height="600px"
                   image={Cuppy}
                   title="Watercooler Talk"
                 />
-            </CardContent>
+              </CardContent>
             </CardActionArea>
-            </Card>
-          </Grid>
-        </Paper>
+          </Card>
+        </Grid>
+      </Paper>
       <br />
       <br />
       <br />

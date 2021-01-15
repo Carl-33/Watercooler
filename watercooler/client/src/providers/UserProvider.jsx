@@ -3,23 +3,22 @@ import { auth, generateUserDocument } from "../firebase";
 
 export const UserContext = createContext({ user: null });
 
-
 const UserProvider = (props) => {
-    const [user, setUser] = useState(null);
-    useEffect(() => {
-        (async () => {
-            auth.onAuthStateChanged(async userAuth => {
-                const user = await generateUserDocument(userAuth);
-                setUser({ user });
-            })})()
-    }, []);
-    return (
-        <UserContext.Provider value={{user, setUser}}>
-            {props.children}
-        </UserContext.Provider>
-    );
-}
-
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    (async () => {
+      auth.onAuthStateChanged(async (userAuth) => {
+        const user = await generateUserDocument(userAuth);
+        setUser({ user });
+      });
+    })();
+  }, []);
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {props.children}
+    </UserContext.Provider>
+  );
+};
 
 // class UserProvider extends Component {
 //     state = {
@@ -42,4 +41,3 @@ const UserProvider = (props) => {
 //     };
 // };
 export default UserProvider;
-

@@ -11,7 +11,7 @@ const Comment = ({ comments, classes }) => {
       <ListItem alignItems="flex-start">
         <ListItemText
           // Title from db
-          style={{color: "darkBlue"}}
+          style={{ color: "darkBlue" }}
           primary={comments.title}
           secondary={
             <React.Fragment>
@@ -24,7 +24,7 @@ const Comment = ({ comments, classes }) => {
                 {/* author from db*/}
                 {comments.author}
               </Typography>
-          {} -- {} 
+              {} -- {}
               {/* //comments from db */}
               {comments.body}
             </React.Fragment>
