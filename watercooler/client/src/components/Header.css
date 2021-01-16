@@ -1,0 +1,56 @@
+body {
+  /* background: radial-gradient(ellipse at bottom, #49678a 0%, #090a0f 100%); */
+  background: radial-gradient(ellipse at bottom, #f3eff1 0%, #334557 100%);
+  /* background: radial-gradient(ellipse at bottom, #9ebbcf 0%, #334557 100%); */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top center;
+  background-size: contain;
+}
+
+h6 > a {
+  color: black !important;
+  text-decoration: none;
+}
+
+h6 {
+  /* color: #f50057; */
+  color: #f1e7ea;
+  font-weight: bold;
+  text-shadow: grey 0.5px 0 5px;
+}
+
+.nav-link {
+  /* font-weight: bold; */
+  font-size: 20px;
+
+  text-decoration: none;
+  color: #031d44;
+  padding: 20px 0px;
+  margin: 0px 20px;
+  display: inline-block;
+  position: relative;
+  opacity: 0.75;
+}
+
+.nav-link:hover {
+  opacity: 1;
+}
+
+.nav-link::before {
+  transition: 300ms;
+  height: 3px;
+  content: "";
+  position: absolute;
+  /* background-color: #031d44; */
+  background-color: #f50057;
+}
+
+.nav-link-ltr::before {
+  width: 0%;
+  bottom: 10px;
+}
+
+.nav-link-ltr:hover::before {
+  width: 100%;
+}
