@@ -14,7 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import API from "../../utils/API";
 import { auth, generateUserDocument } from "../../firebase";
-import { Alert, AlertTitle } from "@material-ui/lab/Alert";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 function Copyright() {
   return (
@@ -92,12 +92,19 @@ const SignUp = () => {
     setLastName("");
     setCompany("");
     setLocation("");
-    const alert = document.querySelector(".alert");
-    alert.innerHTML = `  <Alert severity="success">
-        <AlertTitle>Successfully Singed Up</AlertTitle>
-        <strong>Enjoy the Watercooler Forum!</strong>
-      </Alert>`;
+    showAlert();
   };
+
+  function showAlert() {
+    const alert = document.querySelector(".alert");
+    alert.innerHTML = `<div class="alert alert-dismissible alert-info text-center">
+  <strong>Successfully Signed Up!</strong>  <a href="#" class="alert-link">Enjoy the Watercooler Forum!</a>.
+</div>`;
+
+    setTimeout(() => {
+      alert.innerHTML = "";
+    }, 7000);
+  }
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
     console.log(name);
