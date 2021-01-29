@@ -6,6 +6,7 @@ body {
   background-attachment: fixed;
   background-position: top center;
   background-size: contain;
+  font-family: "Poppins", sans-serif;
 }
 
 h6 > a {

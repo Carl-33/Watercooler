@@ -50,17 +50,20 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-const SignIn = () => {
+const SignIn = ({ userData }) => {
+  const alertDiv = document.querySelector(".alertDiv");
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
   const signInWithEmailAndPasswordHandler = (event, email, password) => {
     event.preventDefault();
-    console.log("welcome");
+    console.log(alert);
     auth.signInWithEmailAndPassword(email, password).catch((error) => {
+      console.log(alert);
+      alertError();
       console.log(email);
-      setError("uh oh, there was an error signing in with password and email");
       console.error(
         "uh oh, there was an error signing in with password and email",
         error
@@ -76,74 +79,88 @@ const SignIn = () => {
     }
   };
 
-  return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign In
-        </Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="userEmail"
-                value={email}
-                type="email"
-                autoComplete="email"
-                onChange={(event) => onChangeHandler(event)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="userPassword"
-                label="Password"
-                type="password"
-                id="password"
-                value={password}
-                autoComplete="current-password"
-                onChange={(event) => onChangeHandler(event)}
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={(event) => {
-              signInWithEmailAndPasswordHandler(event, email, password);
-            }}
-          >
-            Sign In
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="#" variant="body2">
-                Don't have an account? Sign Up!
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-      <br />
+  function alertError() {
+    alertDiv.innerHTML = `<div class="alert alert-dismissible alert-danger text-center">
+                          <strong>Please try your Email and Password again </strong>
+                          <a href="#" class="alert-link"></a>
+                          </div>
+                         `;
+    setTimeout(() => {
+      alertDiv.innerHTML = "";
+    }, 7000);
+  }
 
-      <Box mt={5}>
-        <Copyright />
-      </Box>
-    </Container>
+  return (
+    <>
+      <div className="alertDiv"></div>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign In
+          </Typography>
+          <form className={classes.form} noValidate>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="userEmail"
+                  value={email}
+                  type="email"
+                  autoComplete="email"
+                  onChange={(event) => onChangeHandler(event)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="userPassword"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  value={password}
+                  autoComplete="current-password"
+                  onChange={(event) => onChangeHandler(event)}
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={(event) => {
+                signInWithEmailAndPasswordHandler(event, email, password);
+              }}
+            >
+              Sign In
+            </Button>
+            <Grid container justify="flex-end">
+              <Grid item>
+                <Link href="#" variant="body2">
+                  Don't have an account? Sign Up!
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+        <br />
+
+        <Box mt={5}>
+          <Copyright />
+        </Box>
+      </Container>
+    </>
   );
 };
 

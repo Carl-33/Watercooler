@@ -13,7 +13,7 @@ import Menu from "@material-ui/core/Menu";
 import "./Header.css";
 import Link from "./Links";
 import LocationCityIcon from "@material-ui/icons/LocationCity";
-import { auth as firebaseAuth } from "../firebase"
+import { auth as firebaseAuth } from "../firebase";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,9 +36,8 @@ const Header = () => {
   const handleChange = (event) => {
     setAuth(event.target.checked);
     firebaseAuth.signOut().then(() => {
-      console.log("thanks for visiting")
-    })
-
+      console.log("thanks for visiting");
+    });
   };
 
   const handleMenu = (event) => {

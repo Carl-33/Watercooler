@@ -98,13 +98,16 @@ const SignUp = () => {
   function showAlert() {
     const alert = document.querySelector(".alert");
     alert.innerHTML = `<div class="alert alert-dismissible alert-info text-center">
-  <strong>Successfully Signed Up!</strong>  <a href="#" class="alert-link">Enjoy the Watercooler Forum!</a>.
+  <strong>Successfully Signed Up!</strong>  <a href="#" class="alert-link">Please Sign In!</a>.
 </div>`;
 
     setTimeout(() => {
       alert.innerHTML = "";
+      window.location.href =
+        "https://sheltered-cliffs-91068.herokuapp.com/SignIn";
     }, 7000);
   }
+
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
     console.log(name);
