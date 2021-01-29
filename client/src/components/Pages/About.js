@@ -14,11 +14,12 @@ import Divider from "@material-ui/core/Divider";
 const useStyles = makeStyles({
   root: {
     maxWidth: 1100,
+    marginLeft: "5%",
+    marginTop: "5%",
   },
 });
 const About = () => {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       <Grid
@@ -38,6 +39,14 @@ const About = () => {
                 component="h2"
               >
                 Watercooler
+              </Typography>
+              <Typography
+                gutterBottom
+                align="center"
+                variant="h6"
+                component="h2"
+              >
+                Sign In To View The Dashboard and Forum
               </Typography>
               <Divider />
             </CardContent>
